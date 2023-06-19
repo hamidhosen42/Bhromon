@@ -34,106 +34,111 @@ class _NavHomeState extends State<NavHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          SizedBox(height: 5.h),
-
-          // !-----------------CarouselSlider---------------------
-          StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-              return CarouselSlider(
-                options: CarouselOptions(
-                  height: 200.h,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  viewportFraction: 1,
-                  onPageChanged: (val, carouselPageChangedReason) {
-                    setState(() {
-                      _currentIndex.value = val;
-                    });
-                  },
-                ),
-                items: _carouselImages.map((image) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: AssetImage(image),
-                          fit: BoxFit.cover,
+      body:  SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: BouncingScrollPhysics(),
+        // physics: ClampingScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(height: 5.h),
+      
+            // !-----------------CarouselSlider---------------------
+            StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200.h,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 1,
+                    onPageChanged: (val, carouselPageChangedReason) {
+                      setState(() {
+                        _currentIndex.value = val;
+                      });
+                    },
+                  ),
+                  items: _carouselImages.map((image) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: AssetImage(image),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                }).toList(),
-              );
-            },
-          ),
-
-          SizedBox(
-            height: 5.h,
-          ),
-          Obx(
-            () => DotsIndicator(
-              dotsCount:
-                  _carouselImages.length == 0 ? 1 : _carouselImages.length,
-              position: _currentIndex.value.toDouble(),
+                    );
+                  }).toList(),
+                );
+              },
             ),
-          ),
-
-          // !---------------------Top Place--------------
-          navHomeCategories(
-            "Top Tours",
-            () => Get.toNamed(see_all_topplace),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-          TopPlaces(),
-          SizedBox(
-            height: 5.h,
-          ),
-
-          //! ---------------------Hill Tours--------------
-          navHomeCategories(
-            "Hill Tours",
-            () => Get.toNamed(see_all_hill),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-          AllHillWidget(),
-          SizedBox(
-            height: 5.h,
-          ),
-          //! ---------------------Sea Places--------------
-          navHomeCategories(
-            "Sea Tours",
-            () => Get.toNamed(see_all_sea),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-          SeaTours(),
-          SizedBox(
-            height: 5.h,
-          ),
-
-          // !----------------Park Places------------------
-          navHomeCategories("Park Tours", ()=>Get.toNamed(see_all_park)),
-          ParkTour(),
-
-          SizedBox(
-            height: 10.h,
-          ),
-          SelectList(),
-        ],
+      
+            SizedBox(
+              height: 5.h,
+            ),
+            Obx(
+              () => DotsIndicator(
+                dotsCount:
+                    _carouselImages.length == 0 ? 1 : _carouselImages.length,
+                position: _currentIndex.value.toDouble(),
+              ),
+            ),
+      
+            // !---------------------Top Place--------------
+            navHomeCategories(
+              "Top Tours",
+              () => Get.toNamed(see_all_topplace),
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            TopPlaces(),
+            SizedBox(
+              height: 5.h,
+            ),
+      
+            //! ---------------------Hill Tours--------------
+            navHomeCategories(
+              "Hill Tours",
+              () => Get.toNamed(see_all_hill),
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            AllHillWidget(),
+            SizedBox(
+              height: 5.h,
+            ),
+            //! ---------------------Sea Places--------------
+            navHomeCategories(
+              "Sea Tours",
+              () => Get.toNamed(see_all_sea),
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            SeaTours(),
+            SizedBox(
+              height: 5.h,
+            ),
+      
+            // !----------------Park Places------------------
+            navHomeCategories("Park Tours", ()=>Get.toNamed(see_all_park)),
+            ParkTour(),
+      
+            SizedBox(
+              height: 10.h,
+            ),
+            SelectList(),
+          ],
+        ),
       ),
     );
   }

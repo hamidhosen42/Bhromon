@@ -40,6 +40,10 @@ class _SplashScreenState extends State<SplashScreen> {
               "assets/logo/logo.png",
               height: 300.h,
             ),
+            // SizedBox(
+            //   height: 10.h,
+            // ),
+            const CircularProgressIndicator(),
             SizedBox(
               height: 10.h,
             ),

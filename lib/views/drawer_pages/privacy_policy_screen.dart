@@ -27,7 +27,7 @@ class Privacy extends StatelessWidget {
               ),
               10.h.heightBox,
               Text(
-                headingEng,
+                headingEng1,
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w800,
@@ -40,6 +40,15 @@ class Privacy extends StatelessWidget {
               customDescriptionText(title: title2Eng, desc: desc2Eng),
               10.h.heightBox,
               customDescriptionText(title: title3Eng, desc: desc3Eng),
+              10.h.heightBox,
+              Text(
+                headingEng2,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20.sp,
+                ),
+              ),
               10.h.heightBox,
               customDescriptionText(title: title4Eng, desc: desc4Eng),
               10.h.heightBox,

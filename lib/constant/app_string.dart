@@ -73,33 +73,30 @@ const supportMessageBan =
 
 //privacy policy
 const introEng =
-    "We are committed to protecting the privacy of our users. This Privacy Policy explains how we collect, use, and protect the personal information of our users.";
+    "This Privacy Policy outlines how the FlutterChittagong Bhromon App collects, uses, and protects the personal information of its users. We are committed to safeguarding the privacy of our users and ensuring that their personal information remains confidential and secure. By using the app, you agree to the terms and practices described in this policy.";
 
-const introBan =
-    "আমরা আমাদের ব্যবহারকারীদের গোপনীয়তা রক্ষা করতে প্রতিশ্রুতিবদ্ধ। এই গোপনীয়তা নীতি ব্যাখ্যা করে কিভাবে আমরা আমাদের ব্যবহারকারীদের ব্যক্তিগত তথ্য সংগ্রহ করি, ব্যবহার করি এবং সুরক্ষিত করি।";
+const headingEng1 = "Information Collection and Use:";
+const headingEng2 = "Information Sharing:";
 
-const headingEng = "Information We Collect:";
-const headingBan = "আমাদের সংগ্রহ করা তথ্য:";
-
-const title1Eng = "•	Personal information: ";
+const title1Eng = "•	Personal Information:  ";
 const desc1Eng =
-    "We collect personal information such as name, email address, and phone number when users create an account or book a tour.";
+    "When you register and create a profile on the FlutterChittagong Bhromon App, we may collect personal information such as your name, email address, and profile picture. This information is used for authentication, profile management, and personalized user experience.";
 
-const title2Eng = "•	Usage data: ";
+const title2Eng = "• Location Information: ";
 const desc2Eng =
-    "We also collect information about how users interact with our app, such as their location, search history, and tour bookings.";
+    "The app may request access to your device's location to provide location-based services, such as finding nearby tourist spots. Your location information is only used within the app and is not shared with third parties.";
 
-const title3Eng = "•	To provide and improve our services: ";
+const title3Eng = "•	Usage Information: ";
 const desc3Eng =
-    "We use the information we collect to process tour bookings, send confirmation emails, and contact users about their bookings.";
-
-const title4Eng = "•	To personalize the user's experience: ";
+    "We may collect non-personal information about your use of the app, including the pages visited, features used, and interactions made. This information helps us improve the app's functionality, user experience, and content.";
+    
+const title4Eng = "•	Personal Information: ";
 const desc4Eng =
-    "We use usage data to understand how users interact with our app and to personalize the content and tours that we recommend to them.";
+    "We do not share your personal information with third parties except as described in this policy or with your consent. Your personal information may be shared with authorized service providers who assist us in delivering the app's services, subject to their compliance with confidentiality obligations.";
 
-const title5Eng = "•	To send marketing materials: ";
+const title5Eng = "•	Non-Personal Information: ";
 const desc5Eng =
-    "We may also use your personal information to send promotional emails and other marketing materials.";
+    "Aggregated and anonymized usage information may be shared with third parties for analytics, research, and marketing purposes. This information does not identify individual users.";
 
 const title6Eng = "•	Data Protection:";
 const desc6Eng =
