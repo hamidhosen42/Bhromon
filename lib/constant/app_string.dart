@@ -15,63 +15,29 @@ class AppString{
   static const onboarding_screen3_subtitle =  'Explore Popular Tourist Spots and Delight in Local Cuisine';
 }
 
-//FAQ english strings
-const faqTitle1 = "How I can reached you";
-const faqTitle2 = "Are there age restrictions on your trips?";
-const faqTitle3 = "How safe are my belongings whilst on the trip?";
-const faqTitle4 = "What type of vehicle do you use for travel?";
+//!---------FAQ english strings----------
+const faqTitle1 = "Explore Chittagong's Hidden Gems";
+const faqTitle2 = "Immerse Yourself in Chittagong's Culture";
+const faqTitle3 = "Your Ultimate Guide to Chittagong";
+const faqTitle4 = "Discover Chittagong's Must-Visit Destinations";
 const faqTitle5 =
-    "What if someone who is traveling shows symptoms of COVID-19?";
+    " Plan Your Perfect Trip to Chittagong";
 const faqDescription1 =
-    "The beauty of travel is that it’s accessible to everyone, in some form. Even, You don't have to go far to experience a new culture. In your country, people of different religions, different races, and different ethnicities are living with you. You don't have to be rich to see how they live, their language, food, culture, etc. But you must keep a budget.This budget will also depend on what you want to see and what services your agency will offer you ";
+    "Discover the hidden treasures of Chittagong, Bangladesh with our versatile mobile app. Powered by Flutter and Firebase, it offers secure email verification authentication and profile updates for a personalized experience. Browse a comprehensive list of popular tourist spots with detailed overviews, images, and ratings. Uncover the rich historical significance of each spot and get insider tips for an unforgettable journey.";
 
 const faqDescription2 =
-    "For the majority of our trips, the minimum age is 15. An adult must accompany all children under the age of 18. Younger children can join us on our Family trips and Short Break Adventures. Most of our trips don’t have a maximum age limit, but a Self-Assessment Form is required for all passengers 70 years and over.";
+    "Immerse yourself in the vibrant culture of Chittagong, Bangladesh using our user-friendly mobile app. Experience the flavors of local culinary delights in the food item section and indulge your taste buds. With secure email verification authentication and profile updates, plan your visit hassle-free. Dive into dedicated screens for each tourist spot, uncovering fascinating historical details and insider information to make the most of your Chittagong adventure.";
 
 const faqDescription3 =
-    "While we take all the precautions we can to make sure your belongings are safe, we are traveling to some exciting destinations that are sometimes home to some pretty skilled thieves. Travel insurance is a must and a lockable bag or money belt will always help too.";
+    "Unlock the secrets of Chittagong, Bangladesh with our comprehensive mobile app. Powered by Flutter and Firebase, it provides secure email verification authentication and profile updates. Discover a wide range of popular tourist spots, complete with detailed overviews, captivating images, and reliable ratings. Delve into the historical significance of each location and gain valuable visitor tips to enhance your exploration. With our app, planning and enjoying your visit to Chittagong has never been easier.";
 
 const faqDescription4 =
-    "The type of transport used depends on your trip style. Find out more or see your Essential Trip Information for the specific type of transportation used on your journey.";
+    "Embark on an extraordinary journey through Chittagong, Bangladesh with our feature-rich mobile app. Experience secure email verification authentication and profile updates for peace of mind. Dive into a comprehensive list of must-visit tourist spots, offering detailed descriptions, stunning visuals, and trustworthy ratings. Unearth the historical significance of each destination and benefit from insider tips to make the most of your Chittagong adventure.";
 
 const faqDescription5 =
-    "If a customer feels unwell during their trip, our Intrepid Leader will assist them to access medical care. This may include facilitating COVID-19 testing if requested by the customer and we also encourage customers to bring their own RAT tests from home as a precaution.";
+    "Plan your perfect trip to Chittagong, Bangladesh with our all-inclusive mobile app. Enjoy the convenience of secure email verification authentication and profile updates. Explore a diverse array of popular tourist spots, enriched with comprehensive overviews, captivating images, and helpful ratings. Immerse yourself in the history of each spot, uncovering fascinating details and insider advice. With our user-friendly app, you have everything you need to plan and enjoy a memorable visit to Chittagong.";
 
-//faq bangla strings
-
-const faqBanTitle1 = "আমার চারপাশটা দেখার জন্য কি আমার ধনী হওয়াটা খুব জরুরি?";
-const faqBanTitle2 = "আপনার ভ্রমণের বয়স সীমাবদ্ধতা আছে?";
-const faqBanTitle3 = "ভ্রমণের সময় আমার জিনিসপত্র কতটা নিরাপদ?";
-const faqBanTitle4 = "ভ্রমণের জন্য কি ধরণের যানবাহন তোমরা ব্যবহার করো?";
-const faqBanTitle5 = "ভ্রমণকারী কেউ যদি COVID-19-এর লক্ষণ দেখায় তাহলে কী হবে?";
-
-const faqBanDesc1 =
-    "ভ্রমণের সৌন্দর্য  এটাই যে, এটি প্রত্যেকের জন্য বহনযোগ্য, কোনো না কোনো আকারে। এমনকি, নতুন সংস্কৃতির অভিজ্ঞতার জন্য আপনাকে বেশিদূর যেতে হবে না। আপনার দেশে বিভিন্ন ধর্ম, বিভিন্ন বর্ণ, বিভিন্ন জাতিসত্তার মানুষ আপনার সাথে বসবাস করছে। তারা কীভাবে বাস করে, কি  তাদের ভাষা, তাদের খাবার, সংস্কৃতি ইত্যাদি দেখার জন্য আপনাকে ধনী হতে হবে না। তবে আপনাকে অবশ্যই একটি বাজেট রাখতে হবে। আপনি কি দেখতে চান এবং আপনার এজেন্সি আপনাকে কী সেবা প্রদান করবে, তার উপরও এই বাজেটের পরিমাণ নির্ভর করবে I";
-
-const faqBanDesc2 =
-    "আমাদের বেশিরভাগ ভ্রমণের জন্য, ন্যূনতম বয়স হল 15। একজন প্রাপ্তবয়স্ককে অবশ্যই 18 বছরের কম বয়সী সমস্ত বাচ্চাদের সাথে যেতে হবে। ছোট বাচ্চারা আমাদের পারিবারিক ভ্রমণ এবং ছোট ছোট অ্যাডভেঞ্চারে আমাদের সাথে যোগ দিতে পারে। আমাদের বেশিরভাগ ট্রিপে সর্বোচ্চ বয়সের সীমা নেই, তবে 70 বছর বা তার বেশি বয়সী সমস্ত যাত্রীদের জন্য একটি স্ব-মূল্যায়ন ফর্ম প্রয়োজন।";
-
-const faqBanDesc3 =
-    "আপনার জিনিসপত্র নিরাপদ কিনা তা নিশ্চিত করার জন্য আমরা যতটা সতর্কতা অবলম্বন করতে পারি, আমরা বেশ কিছু গন্তব্যে ভ্রমণ করছি যেগুলো কখনও কখনও বেশ দক্ষ চোরের আবাসস্থল। সবসময়  ভ্রমণ বীমা একটি আবশ্যক এবং একটি লকযোগ্য ব্যাগ বা মানি বেল্ট সাহায্য করবে।";
-
-const faqBanDesc4 =
-    "পরিবহনের ধরন আপনার ভ্রমণের উপর নির্ভর করে। এটি মূলত দূরত্ব, গন্তব্য এবং ব্যক্তিগত পছন্দের মতো বিষয়গুলির উপর পরিবর্তিত হয়।";
-const faqBanDesc5 =
-    "যদি কোনো গ্রাহক তাদের ভ্রমণের সময় অসুস্থ বোধ করেন, আমাদের অকুতোভয় নেতা তাদের চিকিৎসা সেবা পেতে সহায়তা করবেন। গ্রাহকের দ্বারা অনুরোধ করা হলে এর মধ্যে COVID-19 পরীক্ষার সুবিধা অন্তর্ভুক্ত থাকতে পারে এবং আমরা সতর্কতা হিসাবে গ্রাহকদের বাড়ি থেকে তাদের নিজস্ব RAT পরীক্ষা আনতে উৎসাহিত করি।";
-
-//add tour package screen
-const adPackageMessageEng =
-    "We are always in service.  Please feel free for any queries.";
-const adPackageMessageBan =
-    "আমরা সর্বদা সেবায় নিয়োজিত। অনুগ্রহ করে নির্দ্বিধায় জানান আপনার জিজ্ঞাসা ";
-
-//support screen
-const supportMessageEng =
-    "Thank you for being with us. You are requested to contact us if there is any trouble.";
-const supportMessageBan =
-    "আমাদের সাথে থাকার জন্য আপনাকে ধন্যবাদ I কোন সমস্যা হলে আমাদের সাথে যোগাযোগ করার জন্য আপনাকে অনুরোধ করা হচ্ছে";
-
-//privacy policy
+//!------------------privacy policy--------------------
 const introEng =
     "This Privacy Policy outlines how the FlutterChittagong Bhromon App collects, uses, and protects the personal information of its users. We are committed to safeguarding the privacy of our users and ensuring that their personal information remains confidential and secure. By using the app, you agree to the terms and practices described in this policy.";
 
@@ -98,44 +64,18 @@ const title5Eng = "•	Non-Personal Information: ";
 const desc5Eng =
     "Aggregated and anonymized usage information may be shared with third parties for analytics, research, and marketing purposes. This information does not identify individual users.";
 
-const title6Eng = "•	Data Protection:";
+const title6Eng = "•	Data Security:";
 const desc6Eng =
-    "We use encryption to protect data in transit and at rest, and implement access controls to prevent unauthorized access to user data.We also comply with all relevant laws and regulations regarding data protection and privacy.";
+    "We implement reasonable security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no data transmission over the internet or electronic storage system is completely secure, and we cannot guarantee absolute security.";
 
-const title7Eng = "•	Sharing of Personal Information:";
+const title7Eng = "•	SThird-Party Links:";
 const desc7Eng =
-    "We use encryption to protect data in transit and at rest, and implement access controls to prevent unauthorized access to user data.We also comply with all relevant laws and regulations regarding data protection and privacy.";
+    "The app may contain links to third-party websites or services. We are not responsible for the privacy practices or the content of those third-party sites. We encourage users to review the privacy policies of these third parties before providing any personal information.";
 
-const title8Eng = "•	Accessing and Updating Personal Information:";
+const title8Eng = "•	Children's Privacy:";
 const desc8Eng =
-    "Users can access and update their personal information at any time by logging into their account.If you have any questions or concerns about your privacy, please contact us at [email/phone number].";
+    "The FlutterChittagong Bhromon App is not intended for use by individuals under the age of 13. We do not knowingly collect personal information from children. If we become aware of any personal information collected from a child, we will take steps to delete it promptly.";
 
 const conclusionEng =
-    "By using our app, you consent to our collection, use, and protection of your personal information as outlined in this Privacy Policy. We reserve the right to make changes to this policy at any time, and continued use of our app will be considered acceptance of any changes.";
+    "If you have any questions or concerns about this Privacy Policy, please contact us at [contact email].";
 
-//ban
-const title1Ban = "•	ব্যক্তিগত তথ্য: ";
-const desc1Ban = "ব্যবহারকারীরা যখন একটি অ্যাকাউন্ট তৈরি করে বা একটি ট্যুর বুক করে তখন আমরা নাম, ইমেল ঠিকানা এবং ফোন নম্বরের মতো ব্যক্তিগত তথ্য সংগ্রহ করি।";
-
-const title2Ban = "•	ব্যবহারের ডেটা: ";
-const desc2Ban = "ব্যবহারকারীরা কীভাবে আমাদের অ্যাপের সাথে ইন্টারঅ্যাক্ট করেন সে সম্পর্কেও আমরা তথ্য সংগ্রহ করি, যেমন তাদের অবস্থান, অনুসন্ধানের ইতিহাস এবং ট্যুর বুকিং।";
-
-const title3Ban = "•	আমরা কিভাবে আপনার তথ্য ব্যবহার করি:";
-const desc3Ban = "আমাদের পরিষেবাগুলি প্রদান এবং উন্নত করতে: আমরা ভ্রমণ বুকিং প্রক্রিয়াকরণ, নিশ্চিতকরণ ইমেল পাঠাতে এবং ব্যবহারকারীদের তাদের বুকিং সম্পর্কে যোগাযোগ করতে আমরা যে তথ্য সংগ্রহ করি তা ব্যবহার করি।";
-
-const title4Ban = "•	ব্যবহারকারীর অভিজ্ঞতা ব্যক্তিগতকৃত করতে: ";
-const desc4Ban = "ব্যবহারকারীরা আমাদের অ্যাপের সাথে কীভাবে ইন্টারঅ্যাক্ট করে তা বোঝার জন্য এবং আমরা তাদের সুপারিশ করি এমন বিষয়বস্তু এবং ট্যুরগুলি ব্যক্তিগতকৃত করতে আমরা ব্যবহারের ডেটা ব্যবহার করি।";
-
-const title5Ban = "•	বিপণন সামগ্রী পাঠাতে: ";
-const desc5Ban = "আমরা প্রচারমূলক ইমেল এবং অন্যান্য বিপণন সামগ্রী পাঠাতে আপনার ব্যক্তিগত তথ্যও ব্যবহার করতে পারি।";
-
-const title6Ban = "•	তথ্য সুরক্ষা:";
-const desc6Ban = "আমরা ট্রানজিট এবং বিশ্রামে ডেটা সুরক্ষিত করতে এনক্রিপশন ব্যবহার করি এবং ব্যবহারকারীর ডেটাতে অননুমোদিত অ্যাক্সেস রোধ করতে অ্যাক্সেস নিয়ন্ত্রণগুলি প্রয়োগ করি। আমরা ডেটা সুরক্ষা এবং গোপনীয়তা সম্পর্কিত সমস্ত প্রাসঙ্গিক আইন ও প্রবিধান মেনে চলি।";
-
-const title7Ban = "•	ব্যক্তিগত তথ্য শেয়ার করা:";
-const desc7Ban = "আমরা ট্যুর বুকিং সহজতর করার জন্য তৃতীয় পক্ষের বিক্রেতা এবং পরিষেবা প্রদানকারীদের সাথে ব্যক্তিগত তথ্য শেয়ার করতে পারি, যেমন পেমেন্ট প্রসেসর এবং ট্যুর প্রদানকারী।";
-
-const title8Ban = "•	ব্যক্তিগত তথ্য অ্যাক্সেস এবং আপডেট করা:";
-const desc8Ban = "ব্যবহারকারীরা তাদের অ্যাকাউন্টে লগ ইন করে যেকোনো সময় তাদের ব্যক্তিগত তথ্য অ্যাক্সেস এবং আপডেট করতে পারে। আপনার গোপনীয়তা সম্পর্কে আপনার কোন প্রশ্ন বা উদ্বেগ থাকলে, [ইমেল/ফোন নম্বর] এ আমাদের সাথে যোগাযোগ করুন।";
-
-const conclusionBan = "আমাদের অ্যাপ ব্যবহার করে, আপনি এই গোপনীয়তা নীতিতে বর্ণিত হিসাবে আপনার ব্যক্তিগত তথ্য সংগ্রহ, ব্যবহার এবং সুরক্ষার জন্য সম্মত হন। আমরা যে কোনো সময় এই নীতিতে পরিবর্তন করার অধিকার সংরক্ষণ করি এবং আমাদের অ্যাপের ক্রমাগত ব্যবহার যেকোনো পরিবর্তনের স্বীকৃতি হিসেবে বিবেচিত হবে।";
