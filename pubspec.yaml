@@ -69,6 +69,7 @@ dependencies:
   flutter_svg: any
   introduction_screen: any
   animated_splash_screen: any
+  google_sign_in: any
 
 dev_dependencies:
   flutter_test:

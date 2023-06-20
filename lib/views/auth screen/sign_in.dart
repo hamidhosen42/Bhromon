@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -175,11 +176,12 @@ class _SignInScreenState extends State<SignInScreen> {
                       },
                       child: Text("Forget Password?",
                           style: TextStyle(
-                              color: Colors.deepPurpleAccent, fontSize: 16.sp))),
+                              color: Colors.deepPurpleAccent,
+                              fontSize: 16.sp))),
                 ],
               ),
               SizedBox(
-                height: 30.h,
+                height: 10.h,
               ),
               Obx(() {
                 return VioletButton(
@@ -213,7 +215,29 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                 );
               }),
-              SizedBox(height: 30.h),
+              SizedBox(height: 10.h),
+              Center(
+                child: Text(
+                  "--OR--",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              Center(
+                child: IconButton(
+                    onPressed: () {
+                      var obj = AuthController();
+                      obj.signInWithGoogle(context);
+                    },
+                    icon: Icon(
+                      FontAwesomeIcons.google,
+                      color: Colors.blueAccent,
+                      size: 40.sp,
+                    )),
+              ),
+              SizedBox(height: 10.h),
               Center(
                 child: RichText(
                   text: TextSpan(

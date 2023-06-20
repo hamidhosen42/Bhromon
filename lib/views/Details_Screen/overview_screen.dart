@@ -99,6 +99,18 @@ class _OverviewScreenState extends State<OverviewScreen> {
                         Icons.fitness_center, 'Gym', context, () {}),
                   ],
                 ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    servicesTile(Icons.food_bank_outlined, 'Food',
+                        context, () {}),
+                    servicesTile(
+                        Icons.fitness_center, 'Food', context, () {}),
+                  ],
+                ),
               ],
             ),
           ],

@@ -130,13 +130,13 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
 
                                             Fluttertoast.showToast(
                                               msg:
-                                                  "Documents deleted successfully",
+                                                  "Place deleted successfully",
                                               backgroundColor: Colors.black87,
                                             );
                                           }).catchError((error) =>
                                                   Fluttertoast.showToast(
                                                     msg:
-                                                        " Failed to delete documents: $error",
+                                                        " Failed to delete place: $error",
                                                     backgroundColor:
                                                         Colors.black87,
                                                   ));

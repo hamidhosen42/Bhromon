@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import
+// ignore_for_file: prefer_const_constructors, unused_import, no_leading_underscores_for_local_identifiers, unused_local_variable
 
 import 'dart:io';
 
@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tour_application/admin/admin_home.dart';
 import 'package:tour_application/route/route.dart';
 
@@ -22,7 +23,7 @@ class AuthController extends GetxController {
     required String name,
     required String email,
     required String password,
-    required String number,
+    // required String number,
     required String address,
     required String image,
   }) async {
@@ -30,7 +31,6 @@ class AuthController extends GetxController {
       if (name.isNotEmpty &&
           email.isNotEmpty &&
           password.isNotEmpty &&
-          number.isNotEmpty &&
           address.isNotEmpty) {
         UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -52,7 +52,7 @@ class AuthController extends GetxController {
           name: name,
           uid: userCredential.user!.uid,
           email: email,
-          phoneNumber: number,
+          phoneNumber: "",
           address: address,
           image: image,
         );
@@ -82,44 +82,86 @@ class AuthController extends GetxController {
 
   //for user login
   Future<void> userLogin(
-    {required BuildContext context, required String email, required String password}) async {
-  try {
-    if (email.isNotEmpty && password.isNotEmpty) {
-      // !------admin login------------
-      if (email == "hamid@gmail.com" && password == "hamid@gmail") {
-        Fluttertoast.showToast(msg: 'Admin Login Successful');
-        // Navigator.push(context, MaterialPageRoute(builder: (_) => AdminHome()));
-      } else {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: email, password: password);
-
-        var authCredential = userCredential.user;
-        if (authCredential!.uid.isNotEmpty) {
-          if (authCredential.emailVerified) {
-            Fluttertoast.showToast(msg: 'Login Successful');
-            Get.toNamed(home_screen);
-          } else {
-            Fluttertoast.showToast(
-                msg: 'Email not verified. Please check your email and verify.');
-          }
+      {required BuildContext context,
+      required String email,
+      required String password}) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        // !------admin login------------
+        if (email == "hamid@gmail.com" && password == "hamid@gmail") {
+          Fluttertoast.showToast(msg: 'Admin Login Successful');
+          // Navigator.push(context, MaterialPageRoute(builder: (_) => AdminHome()));
         } else {
-          Fluttertoast.showToast(msg: 'Something went wrong!');
-        }
-      }
-    } else {
-      Fluttertoast.showToast(msg: "Please enter all the fields");
-    }
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'user-not-found') {
-      Fluttertoast.showToast(msg: 'No user found for that email.');
-    } else if (e.code == 'wrong-password') {
-      Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
-    }
-  } catch (e) {
-    Fluttertoast.showToast(msg: 'Error: $e');
-  }
-}
+          UserCredential userCredential = await FirebaseAuth.instance
+              .signInWithEmailAndPassword(email: email, password: password);
 
+          var authCredential = userCredential.user;
+          if (authCredential!.uid.isNotEmpty) {
+            if (authCredential.emailVerified) {
+              Fluttertoast.showToast(msg: 'Login Successful');
+              Get.toNamed(home_screen);
+            } else {
+              Fluttertoast.showToast(
+                  msg:
+                      'Email not verified. Please check your email and verify.');
+            }
+          } else {
+            Fluttertoast.showToast(msg: 'Something went wrong!');
+          }
+        }
+      } else {
+        Fluttertoast.showToast(msg: "Please enter all the fields");
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Fluttertoast.showToast(msg: 'No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
+      }
+    } catch (e) {
+      Fluttertoast.showToast(msg: 'Error: $e');
+    }
+  }
+
+// !-----------------------Google Login------------
+  Future signInWithGoogle(context) async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    UserCredential _userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    User? _user = _userCredential.user;
+
+    if (_user!.uid.isNotEmpty) {
+      UserModel userModel = UserModel(
+        uid: _user.uid,
+        name: _user.displayName.toString(),
+        email: _user.email.toString(),
+        phoneNumber:"",
+        address: "",
+        image: "",
+      );
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_user.uid)
+          .set(userModel.toJson());
+      Fluttertoast.showToast(msg: 'Google Login Successfull');
+      Get.toNamed(home_screen);
+    } else {
+      Fluttertoast.showToast(msg: 'Sometimes is wrong');
+    }
+  }
 
   //for logout
   signOut() async {

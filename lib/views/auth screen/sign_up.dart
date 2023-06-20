@@ -3,6 +3,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tour_application/views/auth%20screen/sign_in.dart';
@@ -51,6 +52,7 @@ class SignUpScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 20.h),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          physics: BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -162,18 +164,18 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 height: 12.h,
               ),
-              TextFormField(
-                controller: _phoneController,
-                keyboardType: TextInputType.phone,
-                decoration:
-                    AppStyle().textFieldDecoration("Phone Number", Icons.phone),
-                validator: (value) {
-                  if (!_validatePhoneNumber(value ?? '')) {
-                    return 'Invalid phone number';
-                  }
-                  return null;
-                },
-              ),
+              // TextFormField(
+              //   controller: _phoneController,
+              //   keyboardType: TextInputType.phone,
+              //   decoration:
+              //       AppStyle().textFieldDecoration("Phone Number", Icons.phone),
+              //   validator: (value) {
+              //     if (!_validatePhoneNumber(value ?? '')) {
+              //       return 'Invalid phone number';
+              //     }
+              //     return null;
+              //   },
+              // ),
               SizedBox(
                 height: 12.h,
               ),
@@ -220,10 +222,10 @@ class SignUpScreen extends StatelessWidget {
                       return;
                     }
 
-                    if (_phoneController.text.isEmpty) {
-                      Get.snackbar('Error', 'Phone number is required');
-                      return;
-                    }
+                    // if (_phoneController.text.isEmpty) {
+                    //   Get.snackbar('Error', 'Phone number is required');
+                    //   return;
+                    // }
 
                     if (_addressController.text.isEmpty) {
                       Get.snackbar('Error', 'Address is required');
@@ -236,7 +238,7 @@ class SignUpScreen extends StatelessWidget {
                       name: _nameController.text,
                       email: _emailController.text,
                       password: _passwordController.text,
-                      number: _phoneController.text.toString(),
+                      // number: _phoneController.text.toString(),
                       address: _addressController.text,
                       image: "",
                     );
@@ -244,7 +246,29 @@ class SignUpScreen extends StatelessWidget {
                   },
                 );
               }),
-              SizedBox(height: 15.h),
+              SizedBox(height: 10.h),
+              Center(
+                child: Text(
+                  "--OR--",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              Center(
+                child: IconButton(
+                    onPressed: () {
+                      var obj = AuthController();
+                      obj.signInWithGoogle(context);
+                    },
+                    icon: Icon(
+                      FontAwesomeIcons.google,
+                      color: Colors.blueAccent,
+                      size: 40.sp,
+                    )),
+              ),
+              SizedBox(height: 10.h),
               Center(
                 child: RichText(
                   text: TextSpan(
