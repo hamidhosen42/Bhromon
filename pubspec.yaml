@@ -70,6 +70,16 @@ dependencies:
   introduction_screen: any
   animated_splash_screen: any
   google_sign_in: any
+  google_maps_flutter: 
+  custom_info_window: 
+  geolocator: any
+  flutter_geocoder: 
+  geocoding: 
+  flutter_polyline_points: 
+  uuid: 
+  http:
+  path_provider:
+  baseflow_plugin_template: ^2.1.1
 
 dev_dependencies:
   flutter_test:
