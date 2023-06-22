@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_walkthrough_screen/flutter_walkthrough_screen.dart';
 import 'package:bhromon_application/constant/app_string.dart';
+import '../auth screen/login_screen.dart';
 import '../auth screen/sign_in.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class OnboardingScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           color: Colors.black, // Set the background color here
-        ),
+        ), 
         child: IntroScreen(
           onbordingDataList: list,
           colors: [
@@ -65,7 +66,7 @@ class OnboardingScreen extends StatelessWidget {
             Colors.black,
           ],
           pageRoute: MaterialPageRoute(
-            builder: (context) => SignInScreen(),
+            builder: (context) =>SignInSix(),
           ),
           nextButton: Text(
             "NEXT",

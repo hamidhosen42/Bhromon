@@ -26,7 +26,7 @@ void main(List<String> args) async {
 ThemeManager themeManager = ThemeManager(ThemeMode.light);
 
 class App extends StatelessWidget {
-  // Create the initialization Future outside of `build`:
+  //! Create the initialization Future outside of `build`:
   final Future<FirebaseApp> _initialization = Firebase.initializeApp(
     name: "Shelter",
     options: FirebaseOptions(
@@ -39,22 +39,18 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Initialize FlutterFire:
+      
+      //! Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {
-        // Check for errors
         if (snapshot.hasError) {
           return Center(
             child: CircularProgressIndicator(),
           );
         }
-
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MyApp();
         }
-
-        // Otherwise, show something whilst waiting for initialization to complete
         return Center(
           child: CircularProgressIndicator(),
         );
@@ -89,6 +85,9 @@ class MyApp extends StatelessWidget {
                       TextStyle(color: Colors.black, fontSize: 20.sp))),
           initialRoute: splash,
           getPages: getPages,
+
+          // !-----------splash screen-----------------
+
           home: SplashScreen(),
         );
       },

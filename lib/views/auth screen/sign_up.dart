@@ -13,6 +13,7 @@ import '../../back_end/auth.dart';
 import '../../constant/app_colors.dart';
 import '../../styles/style.dart';
 import '../../widgets/violetButton.dart';
+import 'login_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   final TextEditingController _nameController = TextEditingController();
@@ -287,7 +288,7 @@ class SignUpScreen extends StatelessWidget {
                           color: AppColors.violetColor,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => Get.to(() => SignInScreen()),
+                          ..onTap = () => Get.to(() => SignInSix()),
                       )
                     ],
                   ),

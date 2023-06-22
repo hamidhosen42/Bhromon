@@ -11,6 +11,7 @@ import 'package:bhromon_application/views/auth%20screen/sign_in.dart';
 import 'package:bhromon_application/views/bottom_nav_controller/profile/profile_edit_screen.dart';
 
 import '../../../main.dart';
+import '../../auth screen/login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -366,7 +367,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onTap: () async {
                     await FirebaseAuth.instance.signOut();
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => SignInScreen()));
+                        MaterialPageRoute(builder: (_) => SignInSix()));
                   },
                   child: Card(
                     color: Colors.grey[200],

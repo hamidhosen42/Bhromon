@@ -13,6 +13,7 @@ import 'package:bhromon_application/views/onboarding%20screen/onboarding_screen.
 import 'package:bhromon_application/views/splash%20screen/splash_screen.dart';
 
 import '../admin/nav_home.dart';
+import '../views/auth screen/login_screen.dart';
 import '../views/auth screen/sign_in.dart';
 import '../views/bottom_nav_controller/search_screen.dart';
 import '../views/drawer_pages/faq_screen.dart';
@@ -25,7 +26,8 @@ import '../views/home screen/see_all_hill.dart';
 const String splash = "/splash_screen";
 const String onboarding = "/onboarding_screen";
 const String signUp = "/sign-up-screen";
-const String signIn = "/sign-in-screen";
+// const String signIn = "/sign-in-screen";
+const String signIn = "/login-screen";
 const String resetPassword = "/reset_password.dart";
 const String userForm = "/user-form-screen";
 const String privacyPolicy = "/privacy-policy-screen";
@@ -56,7 +58,7 @@ List<GetPage> getPages = [
   GetPage(name: splash, page: () =>SplashScreen()),
   GetPage(name: onboarding, page: () => OnboardingScreen()),
   GetPage(name: signUp, page: () => SignUpScreen()),
-  GetPage(name: signIn, page: () => SignInScreen()),
+  GetPage(name: signIn, page: () => SignInSix()),
   GetPage(name: resetPassword, page: () => ResetPassword()),
   GetPage(name: see_all_hill, page: () => SeeAllHillPlace()),
   GetPage(name: see_all_topplace, page: () => AllTopPlace()),
