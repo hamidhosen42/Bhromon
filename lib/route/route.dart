@@ -1,16 +1,16 @@
-// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, unused_element, constant_identifier_names
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, unused_element, constant_identifier_names, unused_import
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:tour_application/admin/admin_home.dart';
-import 'package:tour_application/views/auth%20screen/reset_password.dart';
-import 'package:tour_application/views/auth%20screen/sign_up.dart';
-import 'package:tour_application/views/home%20screen/home_screen.dart';
-import 'package:tour_application/views/home%20screen/see-all_park.dart';
-import 'package:tour_application/views/home%20screen/see_all_sea.dart';
-import 'package:tour_application/views/home%20screen/see_all_topplace.dart';
-import 'package:tour_application/views/onboarding%20screen/onboarding_screen.dart';
-import 'package:tour_application/views/splash%20screen/splash_screen.dart';
+import 'package:bhromon_application/admin/admin_home.dart';
+import 'package:bhromon_application/views/auth%20screen/reset_password.dart';
+import 'package:bhromon_application/views/auth%20screen/sign_up.dart';
+import 'package:bhromon_application/views/home%20screen/home_screen.dart';
+import 'package:bhromon_application/views/home%20screen/see-all_park.dart';
+import 'package:bhromon_application/views/home%20screen/see_all_sea.dart';
+import 'package:bhromon_application/views/home%20screen/see_all_topplace.dart';
+import 'package:bhromon_application/views/onboarding%20screen/onboarding_screen.dart';
+import 'package:bhromon_application/views/splash%20screen/splash_screen.dart';
 
 import '../admin/nav_home.dart';
 import '../views/auth screen/sign_in.dart';
@@ -105,7 +105,7 @@ List<GetPage> getPages = [
     },
   ),
 
-  // GetPage(name: adminHome, page: ()=>AdminHome()),
+  GetPage(name: adminHome, page: ()=>AdminHome()),
 
   // GetPage(
   //   name: navAddLastStep,

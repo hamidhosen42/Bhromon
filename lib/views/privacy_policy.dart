@@ -4,7 +4,7 @@
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:get/get.dart';
 // import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-// import 'package:tour_application/widgets/violetButton.dart';
+// import 'package:bhromon_application/widgets/violetButton.dart';
 
 // import '../route/route.dart';
 

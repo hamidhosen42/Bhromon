@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_application/constant/app_colors.dart';
+import 'package:bhromon_application/constant/app_colors.dart';
 
 class AppTheme {
   ThemeData lightTheme(context) => ThemeData(

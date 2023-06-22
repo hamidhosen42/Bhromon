@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_application/route/route.dart';
-import 'package:tour_application/views/auth%20screen/sign_in.dart';
-import 'package:tour_application/views/bottom_nav_controller/profile/profile_edit_screen.dart';
+import 'package:bhromon_application/route/route.dart';
+import 'package:bhromon_application/views/auth%20screen/sign_in.dart';
+import 'package:bhromon_application/views/bottom_nav_controller/profile/profile_edit_screen.dart';
 
 import '../../../main.dart';
 

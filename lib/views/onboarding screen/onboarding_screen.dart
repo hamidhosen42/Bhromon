@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_walkthrough_screen/flutter_walkthrough_screen.dart';
-import 'package:tour_application/constant/app_string.dart';
+import 'package:bhromon_application/constant/app_string.dart';
 import '../auth screen/sign_in.dart';
 
 class OnboardingScreen extends StatelessWidget {

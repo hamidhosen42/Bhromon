@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_application/main.dart';
+import 'package:bhromon_application/main.dart';
 
 Widget servicesTile(
     IconData icon, String title, BuildContext context, Function() ontap) {

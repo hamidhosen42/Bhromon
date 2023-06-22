@@ -11,7 +11,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:tour_application/route/route.dart';
+import 'package:bhromon_application/route/route.dart';
 
 import '../../back_end/auth.dart';
 import '../../constant/app_colors.dart';

@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_application/views/auth%20screen/sign_in.dart';
+import 'package:bhromon_application/views/auth%20screen/sign_in.dart';
 
 import '../../../controllers/text_field_controller.dart';
 import '../../back_end/auth.dart';
@@ -164,18 +164,18 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 height: 12.h,
               ),
-              // TextFormField(
-              //   controller: _phoneController,
-              //   keyboardType: TextInputType.phone,
-              //   decoration:
-              //       AppStyle().textFieldDecoration("Phone Number", Icons.phone),
-              //   validator: (value) {
-              //     if (!_validatePhoneNumber(value ?? '')) {
-              //       return 'Invalid phone number';
-              //     }
-              //     return null;
-              //   },
-              // ),
+              TextFormField(
+                controller: _phoneController,
+                keyboardType: TextInputType.phone,
+                decoration:
+                    AppStyle().textFieldDecoration("Phone Number", Icons.phone),
+                validator: (value) {
+                  if (!_validatePhoneNumber(value ?? '')) {
+                    return 'Invalid phone number';
+                  }
+                  return null;
+                },
+              ),
               SizedBox(
                 height: 12.h,
               ),
@@ -222,10 +222,10 @@ class SignUpScreen extends StatelessWidget {
                       return;
                     }
 
-                    // if (_phoneController.text.isEmpty) {
-                    //   Get.snackbar('Error', 'Phone number is required');
-                    //   return;
-                    // }
+                    if (_phoneController.text.isEmpty) {
+                      Get.snackbar('Error', 'Phone number is required');
+                      return;
+                    }
 
                     if (_addressController.text.isEmpty) {
                       Get.snackbar('Error', 'Address is required');
@@ -238,7 +238,7 @@ class SignUpScreen extends StatelessWidget {
                       name: _nameController.text,
                       email: _emailController.text,
                       password: _passwordController.text,
-                      // number: _phoneController.text.toString(),
+                      number: _phoneController.text.toString(),
                       address: _addressController.text,
                       image: "",
                     );

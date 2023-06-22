@@ -4,6 +4,7 @@ import 'dart:async';
 // import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -68,7 +69,8 @@ class _PlaceLocationState extends State<PlaceLocation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Google Map"),
+        title: Text("Google Map",style: TextStyle(fontSize: 30.sp),),
+        elevation: 0,
       ),
       body: GoogleMap(
         initialCameraPosition: _kGooglePlex ?? CameraPosition(
@@ -79,6 +81,14 @@ class _PlaceLocationState extends State<PlaceLocation> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
+        mapType: MapType.normal,
+        zoomControlsEnabled: true,
+        zoomGesturesEnabled: true,
+        myLocationButtonEnabled: true,
+        myLocationEnabled: true,
+        trafficEnabled: true,
+        rotateGesturesEnabled: true,
+        buildingsEnabled: true,
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),

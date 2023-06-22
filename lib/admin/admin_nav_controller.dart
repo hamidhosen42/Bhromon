@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
-import 'package:tour_application/admin/admin_all_user.dart';
+import 'package:bhromon_application/admin/admin_all_user.dart';
 
 import 'admin_nav_home.dart';
 
@@ -15,7 +15,7 @@ class AdminNavController extends StatefulWidget {
 class _AdminNavControllerState extends State<AdminNavController> {
   RxInt _currentIndex = 0.obs;
 
-  final _pages = [AdminNavHome(),AdminAllUser(),AdminNavHome()];
+  final _pages = [AdminAllUser(), AdminNavHome(), AdminNavHome()];
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +46,9 @@ class _AdminNavControllerState extends State<AdminNavController> {
                     onTap: (value) => _currentIndex.value = value,
                     items: [
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.home_outlined), label: "Home"),
-                      BottomNavigationBarItem(
                           icon: Icon(Icons.person), label: "User"),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.home_outlined), label: "Home"),
                       BottomNavigationBarItem(
                           icon: Icon(Icons.person), label: "Profile"),
                     ]),

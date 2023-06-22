@@ -5,7 +5,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tour_application/widgets/sea_widget.dart';
+import 'package:bhromon_application/widgets/sea_widget.dart';
 
 import '../../route/route.dart';
 import '../../widgets/hill_widget.dart';

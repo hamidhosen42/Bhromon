@@ -1,6 +1,6 @@
 {
-    "name": "tour_application",
-    "short_name": "tour_application",
+    "name": "bhromon_application",
+    "short_name": "bhromon_application",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tour_application/constant/app_colors.dart';
-import 'package:tour_application/constant/app_string.dart';
-import 'package:tour_application/route/route.dart';
-import 'package:tour_application/theme/theme_manager.dart';
+import 'package:bhromon_application/constant/app_colors.dart';
+import 'package:bhromon_application/constant/app_string.dart';
+import 'package:bhromon_application/route/route.dart';
+import 'package:bhromon_application/theme/theme_manager.dart';
 import 'package:get/get.dart';
 
 import 'views/splash screen/splash_screen.dart';

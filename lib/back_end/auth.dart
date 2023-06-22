@@ -9,8 +9,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:tour_application/admin/admin_home.dart';
-import 'package:tour_application/route/route.dart';
+import 'package:bhromon_application/admin/admin_home.dart';
+import 'package:bhromon_application/route/route.dart';
 
 import '../admin/nav_home.dart';
 import '../model/user_model.dart';
@@ -23,21 +23,23 @@ class AuthController extends GetxController {
     required String name,
     required String email,
     required String password,
-    // required String number,
+    required String number,
     required String address,
     required String image,
   }) async {
     try {
-      if (name.isNotEmpty &&
-          email.isNotEmpty &&
-          password.isNotEmpty &&
+
+
+      if (name.isNotEmpty ||
+          email.isNotEmpty ||
+          password.isNotEmpty ||
+          number.isNotEmpty ||
           address.isNotEmpty) {
         UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
-
         // Send email verification
         await userCredential.user!.sendEmailVerification();
 
@@ -52,7 +54,7 @@ class AuthController extends GetxController {
           name: name,
           uid: userCredential.user!.uid,
           email: email,
-          phoneNumber: "",
+          phoneNumber: number,
           address: address,
           image: image,
         );
