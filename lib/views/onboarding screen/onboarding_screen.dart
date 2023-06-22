@@ -1,13 +1,17 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_walkthrough_screen/flutter_walkthrough_screen.dart';
 import 'package:bhromon_application/constant/app_string.dart';
 import '../auth screen/login_screen.dart';
-import '../auth screen/sign_in.dart';
 
 class OnboardingScreen extends StatelessWidget {
+
+  //! ---------------Onboarding screen---------------
   final List<OnbordingData> list = [
+
+    //! ---------------Onboarding screen1 ---------------
+
     OnbordingData(
       imageHeight: 300.h,
       imageWidth: 250.w,
@@ -23,6 +27,8 @@ class OnboardingScreen extends StatelessWidget {
             textAlign: TextAlign.center, style: TextStyle(fontSize: 18.sp)),
       ),
     ),
+
+    //! ---------------Onboarding screen2---------------
     OnbordingData(
       imageHeight: 300.h,
       imageWidth: 250.w,
@@ -36,6 +42,8 @@ class OnboardingScreen extends StatelessWidget {
             textAlign: TextAlign.center, style: TextStyle(fontSize: 18.sp)),
       ),
     ),
+
+    //! ---------------Onboarding screen3---------------
     OnbordingData(
       imageHeight: 300.h,
       imageWidth: 250.w,
@@ -55,9 +63,6 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          color: Colors.black, // Set the background color here
-        ), 
         child: IntroScreen(
           onbordingDataList: list,
           colors: [

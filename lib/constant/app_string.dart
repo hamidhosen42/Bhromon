@@ -5,7 +5,7 @@ class AppString{
   static const AppName = "BHROMON";
 
   // ! ----------------OnBoarding Title text ----------------------------
-  static const onboarding_screen1_title =  'WELCOME TO FCBHROMON';
+  static const onboarding_screen1_title =  'WELCOME TO BHROMON APP';
   static const onboarding_screen2_title =  "DISCOVER CHITTAGONG HIDDEN GEMS";
   static const onboarding_screen3_title =  'PLAN YOUR PERFECT TRIP';
 
