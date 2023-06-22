@@ -39,7 +39,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      
+
       //! Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {
@@ -69,6 +69,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
+
+          // !--------App title -------------
           title: AppString.AppName,
           locale: Locale('en', 'US'),
           fallbackLocale: Locale('en', 'US'),

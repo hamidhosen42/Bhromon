@@ -15,15 +15,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // ! user find
+  // !----------------- user find-------------
   final user = FirebaseAuth.instance.currentUser;
+
   @override
   void initState() {
     super.initState();
-
     if (user != null) {
+      // !-----------Home Screen---------------
       Timer(const Duration(seconds: 5), () => Get.toNamed(home_screen));
     } else {
+      // !-----------Onboardin Screen----------
       Timer(const Duration(seconds: 5), () => Get.toNamed(onboarding));
       // Timer(const Duration(seconds: 1), () => Get.toNamed(adminHome));
     }
@@ -36,17 +38,19 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
+            // !----------logo------------
             Image.asset(
               "assets/logo/logo.png",
               height: 300.h,
             ),
-            // SizedBox(
-            //   height: 10.h,
-            // ),
+
             const CircularProgressIndicator(),
+
             SizedBox(
               height: 10.h,
             ),
+
             Text(
               AppString.AppName,
               style: AppStyle().myTextStyle,
