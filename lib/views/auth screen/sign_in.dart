@@ -261,9 +261,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 20.h),
                 signInGoogleFacebookButton(),
-                SizedBox(height: 10.h),
+                SizedBox(height: 20.h),
                 Center(
                   child: RichText(
                     text: TextSpan(

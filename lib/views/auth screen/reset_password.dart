@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -16,11 +17,14 @@ class ResetPassword extends StatefulWidget {
 
 class _ResetPasswordState extends State<ResetPassword> {
   final _formKey = GlobalKey<FormState>();
+
+  // !------------email textfield-------------
   TextEditingController _emailController = TextEditingController();
 
   bool loading = false;
   final auth = FirebaseAuth.instance;
 
+  // !----------- email validation----------
   bool isEmailValid(String email) {
     final RegExp regex = RegExp(
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
@@ -30,10 +34,32 @@ class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reset Password'),
+        title: Text.rich(
+                  TextSpan(
+                    style: GoogleFonts.inter(
+                      fontSize: 30.0,
+                      color: const Color(0xFF21899C),
+                      letterSpacing: 2.000000061035156,
+                    ),
+                    children: const [
+                      TextSpan(
+                        text: 'RESET',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'PAGE',
+                        style: TextStyle(
+                          color: Color(0xFFFE9879),
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
         elevation: 0,
         scrolledUnderElevation: 0,
       ),
@@ -42,21 +68,41 @@ class _ResetPasswordState extends State<ResetPassword> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: size.height * 0.02,
+              height: size.height * 0.05,
             ),
+            
+            // !-----------email text field--------------
             Padding(
               padding: const EdgeInsets.only(left: 15.0, right: 15),
               child: Form(
                 key: _formKey,
                 child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email),
-                    hintText: 'E-mail',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
+                  style: GoogleFonts.inter(
+                    fontSize: 18.0,
+                    color: const Color(0xFF151624),
                   ),
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.email,
+                        color: Colors.black45,
+                      ),
+                      hintText: "Enter your email",
+                      hintStyle: GoogleFonts.inter(
+                        fontSize: 16.0,
+                        color: const Color(0xFFABB3BB),
+                        height: 1.0,
+                      ),
+                    ),
                   controller: _emailController,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -73,14 +119,11 @@ class _ResetPasswordState extends State<ResetPassword> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  gradient: LinearGradient(
-                    colors: [Colors.blue, Colors.purple],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                ),
+                width: double.infinity,
+                 decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: const Color(0xFF21899C),
+      ),
                 child: OutlinedButton(
                   onPressed: () async {
                     setState(() {
@@ -110,9 +153,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                         horizontal: 20, vertical: 10),
                     child: Text(
                       'Submit',
-                      style: GoogleFonts.courgette(
-                        color: Colors.black,
-                        fontSize: 20,
+                      style:TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.sp,
                       ),
                     ),
                   ),
