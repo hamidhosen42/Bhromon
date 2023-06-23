@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../constant/app_colors.dart';
 import '../main.dart';
@@ -31,7 +32,12 @@ class AppStyle {
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
 
-        hintText: hint
+        hintText: hint,
+         hintStyle: GoogleFonts.inter(
+            fontSize: 16.0,
+            color: const Color(0xFFABB3BB),
+            height: 1.0,
+          ),
       );
   progressDialog(context) => showDialog(
         context: context,
