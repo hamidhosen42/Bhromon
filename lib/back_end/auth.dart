@@ -120,6 +120,9 @@ class AuthController extends GetxController {
       } else if (e.code == 'wrong-password') {
         Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
       }
+      else if (e.code == 'invalid-email') {
+        Fluttertoast.showToast(msg: 'Please enter a valid email.');
+      }
     } catch (e) {
       Fluttertoast.showToast(msg: 'Error: $e');
     }

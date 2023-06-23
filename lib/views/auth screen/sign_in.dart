@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, prefer_final_fields, prefer_const_constructors, unused_local_variable
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, prefer_final_fields, prefer_const_constructors, unused_local_variable, unused_element
 
 import 'dart:async';
 
@@ -8,13 +8,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../../back_end/auth.dart';
-import '../../constant/app_colors.dart';
 import '../../route/route.dart';
 import '../../styles/style.dart';
 import '../../widgets/violetButton.dart';
@@ -26,9 +24,11 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  // ! ------------- TextEditingController---------------
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
+  // ! ------------- authController---------------
   final authController = Get.put(AuthController());
   final _controller = Get.put(TextFieldController());
 
@@ -59,6 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
+  // !------------validation--------------
   bool _validateEmail(String email) {
     return email.isNotEmpty && email.contains('@');
   }
@@ -67,238 +68,227 @@ class _SignInScreenState extends State<SignInScreen> {
     return password.isNotEmpty && password.length >= 6;
   }
 
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [
-            Color.fromRGBO(33, 137, 156, 0.15),
-            Colors.white,
-            Colors.white,
-            Colors.white,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        )),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: size.height * 0.1,
-              ),
-              Text.rich(
-                TextSpan(
-                  style: GoogleFonts.inter(
-                    fontSize: 30.0,
-                    color: const Color(0xFF21899C),
-                    letterSpacing: 2.000000061035156,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: size.height * 0.05,
+                ),
+                Text.rich(
+                  TextSpan(
+                    style: GoogleFonts.inter(
+                      fontSize: 30.0,
+                      color: const Color(0xFF21899C),
+                      letterSpacing: 2.000000061035156,
+                    ),
+                    children: const [
+                      TextSpan(
+                        text: 'LOGIN',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'PAGE',
+                        style: TextStyle(
+                          color: Color(0xFFFE9879),
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
                   ),
-                  children: const [
-                    TextSpan(
-                      text: 'LOGIN',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'PAGE',
-                      style: TextStyle(
-                        color: Color(0xFFFE9879),
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
                 ),
-              ),
-              Text(
-                'Let’s login for explore continues',
-                style: GoogleFonts.inter(
-                  fontSize: 16.0,
-                  color: const Color(0xFF969AA8),
+                Text(
+                  'Let’s login for explore continues',
+                  style: GoogleFonts.inter(
+                    fontSize: 16.0,
+                    color: const Color(0xFF969AA8),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 50.h,
-              ),
-              TextFormField(
-                style: GoogleFonts.inter(
-                  fontSize: 18.0,
-                  color: const Color(0xFF151624),
+                SizedBox(
+                  height: 100.h,
                 ),
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: AppStyle()
-                    .textFieldDecoration("Enter your email", Icons.mail),
-                    validator: (value) {
-                    if (!_validateEmail(value ?? '')) {
-                      return 'Name is required';
-                    }
-                    return null;
-                  },
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Obx(() {
-                return TextFormField(
+
+                // !------------Email Text Field--------------
+                TextFormField(
                   style: GoogleFonts.inter(
                     fontSize: 18.0,
                     color: const Color(0xFF151624),
                   ),
-                  controller: _passwordController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: AppStyle()
+                      .textFieldDecoration("Enter your email", Icons.mail),
+                ),
+                SizedBox(
+                  height: 30.h,
+                ),
+
+                 // !------------Password Text Field--------------
+                Obx(() {
+                  return TextFormField(
+                    style: GoogleFonts.inter(
+                      fontSize: 18.0,
+                      color: const Color(0xFF151624),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    prefixIcon: const Icon(
-                      Icons.lock_open,
-                      color: Colors.black45,
-                    ),
-                    hintText: "Password",
-                    hintStyle: GoogleFonts.inter(
-                      fontSize: 16.0,
-                      color: const Color(0xFFABB3BB),
-                      height: 1.0,
-                    ),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _controller.isPasswordHiden.value
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                    controller: _passwordController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.lock_open,
                         color: Colors.black45,
                       ),
-                      onPressed: () {
-                        _controller.isPasswordHiden.value =
-                            !_controller.isPasswordHiden.value;
-                      },
+                      hintText: "Password",
+                      hintStyle: GoogleFonts.inter(
+                        fontSize: 16.0,
+                        color: const Color(0xFFABB3BB),
+                        height: 1.0,
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _controller.isPasswordHiden.value
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black45,
+                        ),
+                        onPressed: () {
+                          _controller.isPasswordHiden.value =
+                              !_controller.isPasswordHiden.value;
+                        },
+                      ),
                     ),
-                  ),
-                  obscureText: _controller.isPasswordHiden.value,
-                   validator: (value) {
+                    obscureText: _controller.isPasswordHiden.value,
+                    validator: (value) {
                       if (!_validatePassword(value ?? '')) {
                         return 'Invalid password';
                       }
                       return null;
                     },
-                );
-              }),
-              Row(
-                children: [
-                  const Spacer(),
-                  TextButton(
-                      onPressed: () {
-                        Get.toNamed(resetPassword);
-                      },
-                      child: Text("Forgot Password?",
-                          style:
-                              TextStyle(color: Colors.red, fontSize: 16.sp))),
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Obx(() {
-                return VioletButton(
-                  isLoading: authController.isLoading.value,
-                  title: "Sign In",
-                  onAction: () async {
-                    String email = _emailController.text;
-                    String password = _passwordController.text;
-
-                    if (email.isEmpty) {
-                      // Show an error message for invalid email
-                      Get.snackbar('Error', 'Email is required');
-                      return;
-                    }
-
-                    if (password.isEmpty) {
-                      // Show an error message for invalid password
-                       Get.snackbar('Error', 'Password is required');
-                      return;
-                    }
-
-                    authController.isLoading(true);
-                    await authController.userLogin(
-                      context: context,
-                      email: email,
-                      password: password,
-                    );
-                    authController.isLoading(false);
-                  },
-                );
-              }),
-              SizedBox(height: 15.h),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    const Expanded(
-                        flex: 2,
-                        child: Divider(
-                          color: Color(0xFF969AA8),
-                        )),
-                    Expanded(
-                      flex: 3,
-                      child: Text(
-                        'Don’t Have Account?',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          fontSize: 12.0,
-                          color: const Color(0xFF969AA8),
-                          fontWeight: FontWeight.w500,
-                          height: 1.67,
-                        ),
-                      ),
-                    ),
-                    const Expanded(
-                        flex: 2,
-                        child: Divider(
-                          color: Color(0xFF969AA8),
-                        )),
+                  );
+                }),
+                 // !------------Forgot Password--------------
+                Row(
+                  children: [
+                    const Spacer(),
+                    TextButton(
+                        onPressed: () {
+                          Get.toNamed(resetPassword);
+                        },
+                        child: Text("Forgot Password?",
+                            style:
+                                TextStyle(color: Colors.red, fontSize: 16.sp))),
                   ],
                 ),
-              ),
-              SizedBox(height: 10.h),
-              signInGoogleFacebookButton(),
-              SizedBox(height: 10.h),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: "Don’t have an account? ",
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                          text: "Sign Up here",
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            color: Color(0xFFFF7248),
+                SizedBox(
+                  height: 10.h,
+                ),
+                // !----------------Sign In Buttom-------------
+                Obx(() {
+                  return VioletButton(
+                    isLoading: authController.isLoading.value,
+                    title: "Sign In",
+                    onAction: () async {
+                      if (_emailController.text.isEmpty) {
+                        // Show an error message for invalid email
+                        Get.snackbar('Error', 'Email is required');
+                        return;
+                      }
+                  
+                      if (_passwordController.text.isEmpty) {
+                        // Show an error message for invalid password
+                        Get.snackbar('Error', 'Password is required');
+                        return;
+                      }
+                  
+                      authController.isLoading(true);
+                      await authController.userLogin(
+                        context: context,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      );
+                      authController.isLoading(false);
+                    },
+                  );
+                }),
+                SizedBox(height: 15.h),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const Expanded(
+                          flex: 2,
+                          child: Divider(
+                            color: Color(0xFF969AA8),
+                          )),
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          'Don’t Have Account?',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 12.0,
+                            color: const Color(0xFF969AA8),
                             fontWeight: FontWeight.w500,
+                            height: 1.67,
                           ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => Get.toNamed(signUp)),
+                        ),
+                      ),
+                      const Expanded(
+                          flex: 2,
+                          child: Divider(
+                            color: Color(0xFF969AA8),
+                          )),
                     ],
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 10.h),
+                signInGoogleFacebookButton(),
+                SizedBox(height: 10.h),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      text: "Don’t have an account? ",
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                      ),
+                      children: [
+                        TextSpan(
+                            text: "Sign Up here",
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              color: Color(0xFFFF7248),
+                              fontWeight: FontWeight.w500,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Get.toNamed(signUp)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
