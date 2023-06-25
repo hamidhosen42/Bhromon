@@ -77,6 +77,7 @@ class _SignInScreenState extends State<SignInScreen> {
         padding: EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -275,7 +276,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       children: [
                         TextSpan(
-                            text: "Sign Up here",
+                            text: "Sign Up Here",
                             style: TextStyle(
                               fontSize: 18.sp,
                               color: Color(0xFFFF7248),
@@ -319,15 +320,8 @@ class _SignInScreenState extends State<SignInScreen> {
       },
       child: Container(
         alignment: Alignment.center,
-        width: 150.h,
+        width: 150.w,
         height: 50.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(
-            width: 1.0,
-            color: const Color(0xFFEFEFEF),
-          ),
-        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

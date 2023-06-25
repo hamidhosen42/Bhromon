@@ -2,22 +2,19 @@
 
 import 'dart:async';
 
-import 'package:bhromon_application/route/route.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:bhromon_application/views/auth%20screen/sign_in.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../../../controllers/text_field_controller.dart';
 import '../../back_end/auth.dart';
-import '../../constant/app_colors.dart';
+import '../../route/route.dart';
 import '../../styles/style.dart';
 import '../../widgets/violetButton.dart';
 
@@ -27,46 +24,38 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  // !--------------textfield------------------
   final TextEditingController _nameController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
-
   final TextEditingController _emailController = TextEditingController();
-
-  final TextEditingController _phoneController = TextEditingController();
-
   final TextEditingController _addressController = TextEditingController();
 
+  // !-------------------auth controller----------------
   final authController = Get.put(AuthController());
-
   final _controller = Get.put(TextFieldController());
-    late StreamSubscription subscription;
+
+  late StreamSubscription subscription;
   bool isDeviceConnected = false;
   bool isAlertSet = false;
 
-
+  // !------------------validation----------------
   bool _validateEmail(String email) {
-    // Simple email validation, you can replace it with your own validation logic
     return email.isNotEmpty && email.contains('@');
   }
 
   bool _validatePassword(String password) {
-    // Simple password validation, you can replace it with your own validation logic
     return password.isNotEmpty && password.length >= 6;
   }
 
   bool _validatePhoneNumber(String phoneNumber) {
-    // Simple phone number validation, you can replace it with your own validation logic
     return phoneNumber.isNotEmpty && phoneNumber.length >= 11;
   }
 
   bool _validateAddress(String address) {
-    // Simple address validation, you can replace it with your own validation logic
     return address.isNotEmpty && address.isNotEmpty;
   }
 
-
-    @override
+  @override
   void initState() {
     getConnectivity();
     super.initState();
@@ -82,293 +71,274 @@ class _SignUpScreenState extends State<SignUpScreen> {
           }
         },
       );
-      
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [
-            Color.fromRGBO(33, 137, 156, 0.15),
-            Colors.white,
-            Colors.white,
-            Colors.white,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        )),
-        child: Padding(
-           padding: EdgeInsets.symmetric(horizontal: 15), 
-          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: size.height * 0.1,
-              ),
-              Text.rich(
-                TextSpan(
-                  style: GoogleFonts.inter(
-                    fontSize: 30.0,
-                    color: const Color(0xFF21899C),
-                    letterSpacing: 2.000000061035156,
-                  ),
-                  children: const [
-                    TextSpan(
-                      text: 'SIGNUP',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'PAGE',
-                      style: TextStyle(
-                        color: Color(0xFFFE9879),
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Center(
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: size.height * 0.06,
                 ),
-              ),
-              Text(
-            'Let’s signup for explore continues',
-            style: GoogleFonts.inter(
-              fontSize: 16.0,
-              color: const Color(0xFF969AA8),
-            ),
-          ),
-              SizedBox(
-                height: 50.h,
-              ),
-              TextFormField(
-                                style: GoogleFonts.inter(
-              fontSize: 18.0,
-              color: const Color(0xFF151624),
-            ),
-                controller: _nameController,
-                keyboardType: TextInputType.emailAddress,
-                decoration:
-                    AppStyle().textFieldDecoration("Full Name", Icons.person),
-              ),
-              SizedBox(
-                height: 15.h,
-              ),
-              TextFormField(
-                                style: GoogleFonts.inter(
-              fontSize: 18.0,
-              color: const Color(0xFF151624),
-            ),
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration:
-                    AppStyle().textFieldDecoration("Enter your email", Icons.mail),
-              ),
-              SizedBox(
-                height: 15.h,
-              ),
-              Obx(() {
-                return TextFormField(
-                  controller: _passwordController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                Text.rich(
+                  TextSpan(
+                    style: GoogleFonts.inter(
+                      fontSize: 30.0,
+                      color: const Color(0xFF21899C),
+                      letterSpacing: 2.000000061035156,
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    prefixIcon: const Icon(
-                      Icons.lock_open,
-                      color: Colors.black45,
-                    ),
-                    hintText: "Password",
-                    hintStyle: GoogleFonts.inter(
-                  fontSize: 16.0,
-                  color: const Color(0xFFABB3BB),
-                  height: 1.0,
-                ),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _controller.isPasswordHiden.value
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                        color: Colors.black45,
-                      ),
-                      onPressed: () {
-                        _controller.isPasswordHiden.value =
-                            !_controller.isPasswordHiden.value;
-                      },
-                    ),
-                  ),
-                  obscureText: _controller.isPasswordHiden.value,
-                  validator: (value) {
-                    if (!_validatePassword(value ?? '')) {
-                      return 'Invalid password';
-                    }
-                    return null;
-                  },
-                );
-              }),
-              SizedBox(
-                height: 15.h,
-              ),
-              // TextFormField(
-              //   controller: _phoneController,
-              //   keyboardType: TextInputType.phone,
-              //   decoration: AppStyle()
-              //       .textFieldDecoration("Phone Number", Icons.phone),
-              //   validator: (value) {
-              //     if (!_validatePhoneNumber(value ?? '')) {
-              //       return 'Invalid phone number';
-              //     }
-              //     return null;
-              //   },
-              // ),
-              // SizedBox(
-              //   height: 12.h,
-              // ),
-              TextFormField(
-                style: GoogleFonts.inter(
-              fontSize: 18.0,
-              color: const Color(0xFF151624),
-            ),
-                controller: _addressController,
-                keyboardType: TextInputType.text,
-                decoration: AppStyle().textFieldDecoration(
-                    "Enter your address", Icons.location_city_rounded),
-                validator: (value) {
-                  if (!_validateAddress(value ?? '')) {
-                    return 'Address is required';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Text(
-                'Creating an account means you\'re okay with our Terms of Services and our Privacy Policy',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black45),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Obx(() {
-                return VioletButton(
-                  isLoading: authController.isLoading.value,
-                  title: 'Create Account',
-                  onAction: () async {
-                    if (_nameController.text.isEmpty) {
-                      Get.snackbar('Error', 'Name is required');
-                      return;
-                    }
-              
-                    if (_emailController.text.isEmpty) {
-                      Get.snackbar('Error', 'Email is required');
-                      return;
-                    }
-              
-                    if (_passwordController.text.isEmpty) {
-                      Get.snackbar('Error', 'Password is required');
-                      return;
-                    }
-              
-                    // if (_phoneController.text.isEmpty) {
-                    //   Get.snackbar('Error', 'Phone number is required');
-                    //   return;
-                    // }
-              
-                    if (_addressController.text.isEmpty) {
-                      Get.snackbar('Error', 'Address is required');
-                      return;
-                    }
-              
-                    authController.isLoading(true);
-              
-                    await authController.registration(
-                      name: _nameController.text,
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                      number: _phoneController.text.toString(),
-                      address: _addressController.text,
-                      image: "",
-                    );
-                    authController.isLoading(false);
-                  },
-                );
-              }),
-              SizedBox(height: 15.h),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    const Expanded(
-                        flex: 2,
-                        child: Divider(
-                          color: Colors.black,
-                        )),
-                    Expanded(
-                      flex: 3,
-                      child: Text(
-                        'Don’t Create Account?',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          fontSize: 12.0,
-                          color: const Color(0xFF969AA8),
-                          fontWeight: FontWeight.w500,
-                          height: 1.67,
+                    children: const [
+                      TextSpan(
+                        text: 'SIGNUP',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
-                    ),
-                    const Expanded(
-                        flex: 2,
-                        child: Divider(
-                          color: Colors.black,),)
-                  ],
-                ),
-              ),
-             SizedBox(height: 10.h),
-              signInGoogleFacebookButton(),
-              SizedBox(height: 10.h),
-              Center( 
-                child: RichText(
-                  text: TextSpan(
-                    text: "Already an account? ",
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black,
-                    ),
-                    children: [
                       TextSpan(
-                          text: "Sign Ip here",
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            color: Color(0xFFFF7248),
-                            fontWeight: FontWeight.w500,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => Get.toNamed(signIn)),
+                        text: 'PAGE',
+                        style: TextStyle(
+                          color: Color(0xFFFE9879),
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                Text(
+                  'Let’s signup for explore continues',
+                  style: GoogleFonts.inter(
+                    fontSize: 16.0,
+                    color: const Color(0xFF969AA8),
+                  ),
+                ),
+                SizedBox(
+                  height: 50.h,
+                ),
+
+                   // !----------------------Name Field------------------------
+                TextFormField(
+                  style: GoogleFonts.inter(
+                    fontSize: 18.0,
+                    color: const Color(0xFF151624),
+                  ),
+                  controller: _nameController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration:
+                      AppStyle().textFieldDecoration("Full Name", Icons.person),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+
+                // !----------------------Email Field------------------------
+                TextFormField(
+                  style: GoogleFonts.inter(
+                    fontSize: 18.0,
+                    color: const Color(0xFF151624),
+                  ),
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: AppStyle()
+                      .textFieldDecoration("Enter your email", Icons.mail),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+
+                // !----------------------Password Field------------------------
+                Obx(() {
+                  return TextFormField(
+                    controller: _passwordController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.lock_open,
+                        color: Colors.black45,
+                      ),
+                      hintText: "Password",
+                      hintStyle: GoogleFonts.inter(
+                        fontSize: 16.0,
+                        color: const Color(0xFFABB3BB),
+                        height: 1.0,
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _controller.isPasswordHiden.value
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black45,
+                        ),
+                        onPressed: () {
+                          _controller.isPasswordHiden.value =
+                              !_controller.isPasswordHiden.value;
+                        },
+                      ),
+                    ),
+                    obscureText: _controller.isPasswordHiden.value,
+                    validator: (value) {
+                      if (!_validatePassword(value ?? '')) {
+                        return 'Invalid password';
+                      }
+                      return null;
+                    },
+                  );
+                }),
+                SizedBox(
+                  height: 15.h,
+                ),
+
+                // !----------------------Address Field------------------------
+                TextFormField(
+                  style: GoogleFonts.inter(
+                    fontSize: 18.0,
+                    color: const Color(0xFF151624),
+                  ),
+                  controller: _addressController,
+                  keyboardType: TextInputType.text,
+                  decoration: AppStyle().textFieldDecoration(
+                      "Enter your address", Icons.location_city_rounded),
+                  validator: (value) {
+                    if (!_validateAddress(value ?? '')) {
+                      return 'Address is required';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Text(
+                  'Creating an account means you\'re okay with our Terms of Services and our Privacy Policy',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.black45),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+
+                // !----------------------Create Buttom------------------------
+                Obx(() {
+                  return VioletButton(
+                    isLoading: authController.isLoading.value,
+                    title: 'Create Account',
+                    onAction: () async {
+                      if (_nameController.text.isEmpty) {
+                        Get.snackbar('Error', 'Name is required');
+                        return;
+                      }
+
+                      if (_emailController.text.isEmpty) {
+                        Get.snackbar('Error', 'Email is required');
+                        return;
+                      }
+
+                      if (_passwordController.text.isEmpty) {
+                        Get.snackbar('Error', 'Password is required');
+                        return;
+                      }
+                      if (_addressController.text.isEmpty) {
+                        Get.snackbar('Error', 'Address is required');
+                        return;
+                      }
+
+                      authController.isLoading(true);
+
+                      await authController.registration(
+                        name: _nameController.text,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        address: _addressController.text,
+                        image: "",
+                      );
+                      authController.isLoading(false);
+                    },
+                  );
+                }),
+                SizedBox(height: 15.h),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const Expanded(
+                          flex: 2,
+                          child: Divider(
+                            color: Colors.black,
+                          )),
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          'Don’t Create Account?',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 12.0,
+                            color: const Color(0xFF969AA8),
+                            fontWeight: FontWeight.w500,
+                            height: 1.67,
+                          ),
+                        ),
+                      ),
+                      const Expanded(
+                        flex: 2,
+                        child: Divider(
+                          color: Colors.black,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                signInGoogleFacebookButton(),
+                SizedBox(height: 20.h),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      text: "Already an account? ",
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                      ),
+                      children: [
+                        TextSpan(
+                            text: "Sign In Here",
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              color: Color(0xFFFF7248),
+                              fontWeight: FontWeight.w500,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Get.toNamed(signIn)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-   Widget signInGoogleFacebookButton() {
+  Widget signInGoogleFacebookButton() {
     return InkWell(
       onTap: () {
         var obj = authController;
@@ -376,15 +346,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       child: Container(
         alignment: Alignment.center,
-        width: 150.h,
+        width: 150.w,
         height: 50.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(
-            width: 1.0,
-            color: const Color(0xFFEFEFEF),
-          ),
-        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -410,7 +373,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-    showDialogBox(String title, String message) => showCupertinoDialog<String>(
+  showDialogBox(String title, String message) => showCupertinoDialog<String>(
         context: context,
         builder: (BuildContext context) => CupertinoAlertDialog(
           title: Text(title),

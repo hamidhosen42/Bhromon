@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:347025144572:android:b4a141bf44cc4ad3cfb579",
         "android_client_info": {
-          "package_name": "com.example.bhromon_application"
+          "package_name": "com.example.tour_application"
         }
       },
       "oauth_client": [
@@ -17,12 +17,12 @@
           "client_id": "347025144572-1hv93t8fvv35a35lbvq4p7606qcp793v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.bhromon_application",
+            "package_name": "com.example.tour_application",
             "certificate_hash": "5f228ba0549fa62a846a1b88870bf578296daedc"
           }
         },
         {
-          "client_id": "347025144572-sn01q6bg8prbrabt2vid4ah6k6f4sqk5.apps.googleusercontent.com",
+          "client_id": "347025144572-701ov2uc697bb366kjjjv9984hoa5rth.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "347025144572-sn01q6bg8prbrabt2vid4ah6k6f4sqk5.apps.googleusercontent.com",
+              "client_id": "347025144572-701ov2uc697bb366kjjjv9984hoa5rth.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

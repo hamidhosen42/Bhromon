@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:bhromon_application/views/Details_Screen/description.dart';
-import 'package:bhromon_application/views/Details_Screen/overview_screen.dart';
+import 'package:tour_application/views/Details_Screen/description.dart';
+import 'package:tour_application/views/Details_Screen/overview_screen.dart';
 
 import 'taste_of_chi.dart';
 

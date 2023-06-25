@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:bhromon_application/widgets/SeaTours.dart';
-import 'package:bhromon_application/widgets/HillTours.dart';
-import 'package:bhromon_application/widgets/tour_widget.dart';
+import 'package:tour_application/widgets/SeaTours.dart';
+import 'package:tour_application/widgets/HillTours.dart';
+import 'package:tour_application/widgets/tour_widget.dart';
 
 import '../../widgets/ParkTour.dart';
 

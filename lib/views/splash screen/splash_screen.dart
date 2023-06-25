@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:bhromon_application/constant/app_string.dart';
-import 'package:bhromon_application/route/route.dart';
-import 'package:bhromon_application/styles/style.dart';
+import 'package:tour_application/constant/app_string.dart';
+import 'package:tour_application/route/route.dart';
+import 'package:tour_application/styles/style.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

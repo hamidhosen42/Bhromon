@@ -4,8 +4,8 @@
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get_storage/get_storage.dart';
-// import 'package:bhromon_application/const/app_colors.dart';
-// import 'package:bhromon_application/screen/main_home_screen.dart';
+// import 'package:tour_application/const/app_colors.dart';
+// import 'package:tour_application/screen/main_home_screen.dart';
 
 // import '../styles/style.dart';
 

@@ -9,11 +9,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:bhromon_application/admin/admin_home.dart';
-import 'package:bhromon_application/route/route.dart';
 
 import '../admin/nav_home.dart';
 import '../model/user_model.dart';
+import '../route/route.dart';
 
 class AuthController extends GetxController {
   //for button loading indicator
@@ -23,17 +22,13 @@ class AuthController extends GetxController {
     required String name,
     required String email,
     required String password,
-    required String number,
     required String address,
     required String image,
   }) async {
     try {
-
-
-      if (name.isNotEmpty ||
-          email.isNotEmpty ||
-          password.isNotEmpty ||
-          number.isNotEmpty ||
+      if (name.isNotEmpty &&
+          email.isNotEmpty &&
+          password.isNotEmpty &&
           address.isNotEmpty) {
         UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -54,7 +49,7 @@ class AuthController extends GetxController {
           name: name,
           uid: userCredential.user!.uid,
           email: email,
-          phoneNumber: number,
+          phoneNumber: "",
           address: address,
           image: image,
         );
@@ -82,34 +77,30 @@ class AuthController extends GetxController {
     }
   }
 
-  //for user login
+  //!--------------for user login------------
   Future<void> userLogin(
       {required BuildContext context,
       required String email,
       required String password}) async {
     try {
+
       if (email.isNotEmpty && password.isNotEmpty) {
         // !------admin login------------
-        if (email == "hamid@gmail.com" && password == "hamid@gmail") {
-          Fluttertoast.showToast(msg: 'Admin Login Successful');
-          // Navigator.push(context, MaterialPageRoute(builder: (_) => AdminHome()));
-        } else {
-          UserCredential userCredential = await FirebaseAuth.instance
-              .signInWithEmailAndPassword(email: email, password: password);
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+        var authCredential = userCredential.user;
+        if (authCredential!.uid.isNotEmpty) {
 
-          var authCredential = userCredential.user;
-          if (authCredential!.uid.isNotEmpty) {
-            if (authCredential.emailVerified) {
-              Fluttertoast.showToast(msg: 'Login Successful');
-              Get.toNamed(home_screen);
-            } else {
-              Fluttertoast.showToast(
-                  msg:
-                      'Email not verified. Please check your email and verify.');
-            }
+                  
+          if (authCredential.emailVerified) {
+            Fluttertoast.showToast(msg: 'Login Successful');
+            Get.toNamed(home_screen);
           } else {
-            Fluttertoast.showToast(msg: 'Something went wrong!');
+            Fluttertoast.showToast(
+                msg: 'Email not verified. Please check your email and verify.');
           }
+        } else {
+          Fluttertoast.showToast(msg: 'Something went wrong!');
         }
       } else {
         Fluttertoast.showToast(msg: "Please enter all the fields");
@@ -119,8 +110,7 @@ class AuthController extends GetxController {
         Fluttertoast.showToast(msg: 'No user found for that email.');
       } else if (e.code == 'wrong-password') {
         Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
-      }
-      else if (e.code == 'invalid-email') {
+      } else if (e.code == 'invalid-email') {
         Fluttertoast.showToast(msg: 'Please enter a valid email.');
       }
     } catch (e) {
@@ -153,7 +143,7 @@ class AuthController extends GetxController {
         uid: _user.uid,
         name: _user.displayName.toString(),
         email: _user.email.toString(),
-        phoneNumber:"",
+        phoneNumber: "",
         address: "",
         image: "",
       );

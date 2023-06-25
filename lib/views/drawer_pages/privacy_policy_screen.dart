@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:bhromon_application/constant/app_string.dart';
+import 'package:tour_application/constant/app_string.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Privacy extends StatelessWidget {

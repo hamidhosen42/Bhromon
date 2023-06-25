@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
-import 'package:bhromon_application/views/bottom_nav_controller/profile/profile_screen.dart';
+import 'package:tour_application/views/bottom_nav_controller/profile/profile_screen.dart';
 
 import 'favourite_screen.dart';
 import 'nav_home.dart';

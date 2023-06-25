@@ -4,7 +4,7 @@
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:get/get.dart';
 // import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-// import 'package:bhromon_application/widgets/violetButton.dart';
+// import 'package:tour_application/widgets/violetButton.dart';
 
 // import '../route/route.dart';
 
@@ -23,7 +23,7 @@
 //                 children: [
 //                   Expanded(
 //                     child: SfPdfViewer.network(
-//                       'https://firebasestorage.googleapis.com/v0/b/tour-application-57625.appspot.com/o/privacy%20policy%2Fprivacy-policy.pdf?alt=media&token=047c5c12-206f-47eb-817b-8809286b204f',
+//                       'https://firebasestorage.googleapis.com/v0/b/tour_application-57625.appspot.com/o/privacy%20policy%2Fprivacy-policy.pdf?alt=media&token=047c5c12-206f-47eb-817b-8809286b204f',
 //                       onDocumentLoaded: (PdfDocumentLoadedDetails details) {
 //                         _loaded.value = true;
 //                       },

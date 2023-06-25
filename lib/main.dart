@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:bhromon_application/constant/app_colors.dart';
-import 'package:bhromon_application/constant/app_string.dart';
-import 'package:bhromon_application/route/route.dart';
-import 'package:bhromon_application/theme/theme_manager.dart';
+import 'package:tour_application/constant/app_colors.dart';
+import 'package:tour_application/constant/app_string.dart';
+import 'package:tour_application/route/route.dart';
+import 'package:tour_application/theme/theme_manager.dart';
 import 'package:get/get.dart';
-
 import 'views/splash screen/splash_screen.dart';
 
 // themeManager.themeMode == ThemeMode.light? Colors.black : Colors.white
@@ -33,7 +32,7 @@ class App extends StatelessWidget {
         apiKey: "AIzaSyBYUYF_fcGP7uyCxjlxTw_-sJZjZnCiX6c",
         appId: "1:347025144572:android:b4a141bf44cc4ad3cfb579",
         messagingSenderId: "347025144572",
-        projectId: "tour-application-57625"),
+        projectId: "tour_application-57625"),
   );
 
   @override
@@ -72,8 +71,6 @@ class MyApp extends StatelessWidget {
 
           // !--------App title -------------
           title: AppString.AppName,
-          locale: Locale('en', 'US'),
-          fallbackLocale: Locale('en', 'US'),
           theme: ThemeData(
               primarySwatch: Colors.blue,
               textTheme: GoogleFonts.poppinsTextTheme(
