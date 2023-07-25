@@ -9,8 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../styles/style.dart';
-import '../../../widgets/violetButton.dart';
+import '../../styles/style.dart';
+import '../../widgets/violetButton.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ProfileEditScreen extends StatefulWidget {

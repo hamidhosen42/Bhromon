@@ -15,7 +15,7 @@ final lightTheme = ThemeData(
       elevation: 10,
     ),
   ),
-  accentColor: Colors.black,
+  hintColor: Colors.black,
   scaffoldBackgroundColor: Colors.white,
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.black),
@@ -29,7 +29,7 @@ final darkTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
   primaryColor: Colors.black,
-  accentColor: Colors.blueAccent,
+  hintColor: Colors.blueAccent,
   scaffoldBackgroundColor: Colors.black,
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.white),

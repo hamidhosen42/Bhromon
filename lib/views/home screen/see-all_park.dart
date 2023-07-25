@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, non_constant_identifier_names
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -15,17 +16,19 @@ class SeeAllPark extends StatefulWidget {
 }
 
 class _SeeAllParkState extends State<SeeAllPark> {
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        title: Text("See All Park Tours",style: TextStyle(fontSize: 25.sp),),
+        title: Text(
+          "See All Park Tours",
+          style: TextStyle(fontSize: 25.sp),
+        ),
       ),
       body: StreamBuilder(
-        stream:
-            FirebaseFirestore.instance.collection('all-park').snapshots(),
+        stream: FirebaseFirestore.instance.collection('all-park').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text('Something went wrong'));
@@ -48,20 +51,24 @@ class _SeeAllParkState extends State<SeeAllPark> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 var name = data['name'];
-                 var description = data['description'];
-                 var location=data['location'];
-                 var duration=data['duration'];
+                var description = data['description'];
+                var location = data['location'];
+                var duration = data['duration'];
                 var rating = data['rating'];
-                                var imageList = data['image_list'] as List<dynamic>;
-                var eat_hotal=data['eat_hotal'];
+                var imageList = data['image_list'] as List<dynamic>;
+                var eat_hotal = data['eat_hotal'];
                 return InkWell(
                   onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) =>
-
-                                 DetailScreen(location:location,duration:duration,description:description,name:name, imageList: imageList,eat_hotal:eat_hotal)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => DetailScreen(
+                                location: location,
+                                duration: duration,
+                                description: description,
+                                name: name,
+                                imageList: imageList,
+                                eat_hotal: eat_hotal)));
                   },
                   child: Container(
                     width: 120.w,
@@ -81,33 +88,39 @@ class _SeeAllParkState extends State<SeeAllPark> {
                             topLeft: Radius.circular(7.r),
                             topRight: Radius.circular(7.r),
                           ),
-                           child: data['image'] != null
-                                ? Image.network(
-                                    data['image'],
-                                    height: 130.h,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  )
-                                : CircularProgressIndicator(
-                                    color: Colors.blue,
-                                  ),
+                          child: CachedNetworkImage(
+                            imageUrl: data['image'],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 130.h,
+                            filterQuality: FilterQuality.high,
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
+                              ),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
                         ),
                         Text(
-                         data['name'].length > 17
-                                  ? data['name'].substring(0, 17) +
-                                      '...' // Add ellipsis if the string is longer than 10 characters
-                                  : data['name'],
+                          data['name'].length > 17
+                              ? data['name'].substring(0, 17) +
+                                  '...' // Add ellipsis if the string is longer than 10 characters
+                              : data['name'],
                           style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
-                         Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.timer),
-                            SizedBox(width: 5.w,),
+                            SizedBox(
+                              width: 5.w,
+                            ),
                             Text(
                               data['duration'].toString(), // Price value
                               style: TextStyle(
@@ -117,26 +130,26 @@ class _SeeAllParkState extends State<SeeAllPark> {
                               ),
                             ),
                           ],
-                         ),
+                        ),
                         RatingBar.builder(
-                            itemSize: 16.w,
-                            initialRating: rating.toDouble(),
-                            minRating: 1,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                            itemBuilder: (context, _) => Icon(
-                              Icons.star,
-                              color: Colors.red,
-                            ),
-                            onRatingUpdate: (rating) {
-                              print(rating);
-                            },
+                          itemSize: 16.w,
+                          initialRating: rating.toDouble(),
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                          itemBuilder: (context, _) => Icon(
+                            Icons.star,
+                            color: Colors.red,
                           ),
-                          SizedBox(
-                            height: 5.sp,
-                          )
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                          },
+                        ),
+                        SizedBox(
+                          height: 5.sp,
+                        )
                       ],
                     ),
                   ),

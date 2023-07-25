@@ -80,6 +80,7 @@ dependencies:
   http:
   path_provider:
   baseflow_plugin_template: ^2.1.1
+  dropdown_button2: 
 
 dev_dependencies:
   flutter_test:

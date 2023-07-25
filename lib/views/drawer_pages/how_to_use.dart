@@ -11,7 +11,6 @@ class HowToUse extends StatelessWidget {
       aspectRatio: 1,
       child: BetterPlayer.network(
         data['url'],
-        // ignore: prefer_const_constructors
         betterPlayerConfiguration: BetterPlayerConfiguration(
           aspectRatio: 1,
           autoPlay: false,

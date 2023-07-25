@@ -5,15 +5,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tour_application/widgets/sea_widget.dart';
+import 'package:tour_application/views/home%20screen/selectlist_screen.dart';
 
 import '../../route/route.dart';
 import '../../widgets/hill_widget.dart';
 import '../../widgets/nav_home_categories.dart';
 import '../../widgets/park_widget.dart';
-import 'selectlist_screen.dart';
+import '../../widgets/sea_widget.dart';
 import '../../widgets/top-widget.dart';
-
 class NavHome extends StatefulWidget {
   @override
   State<NavHome> createState() => _NavHomeState();

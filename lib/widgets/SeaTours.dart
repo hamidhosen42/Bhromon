@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -69,34 +70,20 @@ class _SeaPlaceState extends State<SeaPlace> {
                             ClipRRect(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(15)),
-                              child: Image.network(
-                                data['image'],
-                                height: 180,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                                filterQuality: FilterQuality.high,
-                                loadingBuilder: (BuildContext context,
-                                    Widget child,
-                                    ImageChunkEvent? loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value:
-                                          loadingProgress.expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  loadingProgress
-                                                      .expectedTotalBytes!
-                                              : null,
-                                    ),
-                                  );
-                                },
-                                errorBuilder: (BuildContext context,
-                                    Object exception, StackTrace? stackTrace) {
-                                  return Icon(Icons.error);
-                                },
+                              child: CachedNetworkImage(
+                            imageUrl: data['image'],
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 180.h,
+                            filterQuality: FilterQuality.high,
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
                               ),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
                             ),
                           ],
                         ),

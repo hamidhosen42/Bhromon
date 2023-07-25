@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -35,86 +36,79 @@ class _ParkPlaceState extends State<ParkPlace> {
             DocumentSnapshot document = snapshot.data!.docs[index];
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
-                var name = data['name'];
-                 var description = data['description'];
-                 var location=data['location'];
-                 var duration=data['duration'];
-                var rating = data['rating'];
-                                var imageList = data['image_list'] as List<dynamic>;
-                var eat_hotal=data['eat_hotal'];
-                return Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) =>
-                                 DetailScreen(location:location,duration:duration,description:description,name:name, imageList: imageList,eat_hotal:eat_hotal)));
-                    },
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
-                child: Card(
-                  child: Column(
-                    children: [
-                      Stack(
-                        alignment: Alignment.bottomLeft,
-                        children: [
-                          ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(15)),
-                            child: Image.network(
-                              data['image'],
-                              height: 180,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                              filterQuality: FilterQuality.high,
-                              loadingBuilder: (BuildContext context,
-                                  Widget child,
-                                  ImageChunkEvent? loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return Center(
+            var name = data['name'];
+            var description = data['description'];
+            var location = data['location'];
+            var duration = data['duration'];
+            var rating = data['rating'];
+            var imageList = data['image_list'] as List<dynamic>;
+            var eat_hotal = data['eat_hotal'];
+            return Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => DetailScreen(
+                              location: location,
+                              duration: duration,
+                              description: description,
+                              name: name,
+                              imageList: imageList,
+                              eat_hotal: eat_hotal)));
+                },
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Stack(
+                          alignment: Alignment.bottomLeft,
+                          children: [
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15)),
+                              child: CachedNetworkImage(
+                                imageUrl: data['image'],
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: 180.h,
+                                filterQuality: FilterQuality.high,
+                                placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator(
-                                    value: loadingProgress.expectedTotalBytes !=
-                                            null
-                                        ? loadingProgress
-                                                .cumulativeBytesLoaded /
-                                            loadingProgress.expectedTotalBytes!
-                                        : null,
+                                    color: Colors.blue,
                                   ),
-                                );
-                              },
-                              errorBuilder: (BuildContext context,
-                                  Object exception, StackTrace? stackTrace) {
-                                return Icon(Icons.error);
-                              },
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
                             ),
-                          ),
-                          Positioned(
-                              child: Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(15),
-                                      topRight: Radius.circular(15)),
-                                  color: Colors.black54),
-                              child: Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Text(
-                                  data['name'],
-                                  style: GoogleFonts.lato(
-                                    color: Colors.white,
-                                    fontSize: 22,
+                            Positioned(
+                                child: Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        bottomRight: Radius.circular(15),
+                                        topRight: Radius.circular(15)),
+                                    color: Colors.black54),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    data['name'],
+                                    style: GoogleFonts.lato(
+                                      color: Colors.white,
+                                      fontSize: 22,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )),
-                        ],
-                      ),
-                      Padding(
+                            )),
+                          ],
+                        ),
+                        Padding(
                           padding: const EdgeInsets.all(5),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -180,12 +174,12 @@ class _ParkPlaceState extends State<ParkPlace> {
                             ],
                           ),
                         ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-                );
+            );
           },
         );
       },

@@ -2,9 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:tour_application/admin/admin_nav_controller.dart';
 
-import '../admin/admin_home.dart';
-import '../admin/home_screen.dart';
+import '../admin/admin_home_screen.dart';
 import '../admin/nav_home.dart';
 import '../admin/see-all_park.dart';
 import '../admin/see_all_sea.dart';
@@ -12,12 +12,12 @@ import '../admin/see_all_topplace.dart';
 import '../views/auth screen/reset_password.dart';
 import '../views/auth screen/sign_in.dart';
 import '../views/auth screen/sign_up.dart';
-import '../views/bottom_nav_controller/search_screen.dart';
 import '../views/drawer_pages/faq_screen.dart';
 import '../views/drawer_pages/how_to_use.dart';
 import '../views/drawer_pages/privacy_policy_screen.dart';
 import '../views/drawer_pages/settings.dart';
 import '../views/drawer_pages/support_screen.dart';
+import '../views/home screen/home_screen.dart';
 import '../views/home screen/see_all_hill.dart';
 import '../views/onboarding screen/onboarding_screen.dart';
 import '../views/splash screen/splash_screen.dart';
@@ -48,6 +48,7 @@ const String navAddLastStep = '/navAddLastStep-screen';
 
 // !admin-----------------------------
 const String adminHome = '/admin_home';
+const String adminNavController = '/admin_nav_controller';
 
 
 // control our page  route flow
@@ -86,14 +87,6 @@ List<GetPage> getPages = [
     page: () => HowToUse(),
   ),
     GetPage(
-    name: searchScreen,
-    page: () => SearchScreen(),
-  ),
-  // GetPage(
-  //   name: profileScreen,
-  //   page: () => UserProfile(),
-  // ),
-    GetPage(
     name: settingsScreen,
     page: () => Settings(),
   ),
@@ -105,7 +98,9 @@ List<GetPage> getPages = [
     },
   ),
 
-  GetPage(name: adminHome, page: ()=>AdminHome()),
+  // !----------admin-----------------
+  GetPage(name: adminHome, page: ()=>AdminHomeScreens()),
+  GetPage(name: adminNavController, page: ()=>AdminNavController()),
 
   // GetPage(
   //   name: navAddLastStep,

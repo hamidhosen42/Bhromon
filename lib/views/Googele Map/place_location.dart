@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_field, prefer_final_fields, unused_element, avoid_print, prefer_interpolation_to_compose_strings, unused_local_variable, non_constant_identifier_names, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, unused_field, prefer_final_fields, unused_element, avoid_print, prefer_interpolation_to_compose_strings, unused_local_variable, non_constant_identifier_names, use_key_in_widget_constructors, body_might_complete_normally_catch_error
 
 import 'dart:async';
 // import 'dart:ffi';
@@ -90,15 +90,15 @@ class _PlaceLocationState extends State<PlaceLocation> {
         rotateGesturesEnabled: true,
         buildingsEnabled: true,
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50),
-        child: FloatingActionButton(
-          onPressed: () {
-            loadData();
-          },
-          child: Icon(Icons.local_activity),
-        ),
-      ),
+      // floatingActionButton: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 50),
+      //   child: FloatingActionButton(
+      //     onPressed: () {
+      //       loadData();
+      //     },
+      //     child: Icon(Icons.local_activity),
+      //   ),
+      // ),
     );
   }
 }

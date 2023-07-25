@@ -1,22 +1,19 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, await_only_futures, unused_field
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../constant/app_string.dart';
+import '../../constant/app_string.dart';
 import 'admin_nav_controller.dart';
 
-class AdminHome extends StatefulWidget {
-  const AdminHome({super.key});
-
+class AdminHomeScreens extends StatefulWidget {
   @override
-  State<AdminHome> createState() => _AdminHomeState();
+  State<AdminHomeScreens> createState() => _AdminHomeScreensState();
 }
 
-class _AdminHomeState extends State<AdminHome> {
+class _AdminHomeScreensState extends State<AdminHomeScreens> {
   Future _exitDialog(context) {
     return showDialog(
         context: context,
@@ -51,12 +48,6 @@ class _AdminHomeState extends State<AdminHome> {
       },
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(onPressed: (){}, icon: Icon(Icons.add)),
-            )
-          ],
             automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
             title: Row(
@@ -82,12 +73,12 @@ class _AdminHomeState extends State<AdminHome> {
             ),
             elevation: 0,
             backgroundColor: Colors.white),
-        body:Stack(
+        body: Stack(
           children: [
-           AdminNavController()
+            AdminNavController(),
           ],
+        ),
       ),
-      )
     );
   }
 }

@@ -18,7 +18,7 @@ class VioletButton extends StatelessWidget {
     return InkWell(
       onTap: onAction,
       child: Container(
-        height: 60.h,
+        height: 70.h,
         width: double.infinity,
               decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),

@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
+  // final TextEditingController _addressController = TextEditingController();
 
   // !-------------------auth controller----------------
   final authController = Get.put(AuthController());
@@ -51,9 +52,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return phoneNumber.isNotEmpty && phoneNumber.length >= 11;
   }
 
-  bool _validateAddress(String address) {
-    return address.isNotEmpty && address.isNotEmpty;
-  }
+  // bool _validateAddress(String address) {
+  //   return address.isNotEmpty && address.isNotEmpty;
+  // }
 
   @override
   void initState() {
@@ -71,6 +72,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
           }
         },
       );
+  final List<String> items = [
+    'Barishal',
+    'Chattogram',
+    'Dhaka',
+    'Khulna',
+    'Rajshahi',
+    'Rangpur',
+    'Mymensingh',
+    'Sylhet',
+  ];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 50.h,
                 ),
 
-                   // !----------------------Name Field------------------------
+                // !----------------------Name Field------------------------
                 TextFormField(
                   style: GoogleFonts.inter(
                     fontSize: 18.0,
@@ -204,23 +216,75 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 15.h,
                 ),
 
-                // !----------------------Address Field------------------------
-                TextFormField(
-                  style: GoogleFonts.inter(
-                    fontSize: 18.0,
-                    color: const Color(0xFF151624),
+                Container(
+                  height: 80.h,
+                  decoration: BoxDecoration(
+                    // Background color of the container
+                    border: Border.all(
+                      // Border properties
+                      color: Colors.black, // Border color
+                      width: 1, // Border width
+                    ),
+                    borderRadius: BorderRadius.circular(
+                        10), // Border radius to make it rounded
                   ),
-                  controller: _addressController,
-                  keyboardType: TextInputType.text,
-                  decoration: AppStyle().textFieldDecoration(
-                      "Enter your address", Icons.location_city_rounded),
-                  validator: (value) {
-                    if (!_validateAddress(value ?? '')) {
-                      return 'Address is required';
-                    }
-                    return null;
-                  },
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton2<String>(
+                      isExpanded: true,
+                      hint: Text(
+                        'Bangladesh District',
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).hintColor,
+                        ),
+                      ),
+                      items: items
+                          .map((String item) => DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ))
+                          .toList(),
+                      value: selectedValue,
+                      onChanged: (String? value) {
+                        setState(() {
+                          selectedValue = value;
+                        });
+                      },
+                      buttonStyleData: ButtonStyleData(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        height: 40,
+                        width: double.infinity,
+                      ),
+                      menuItemStyleData: MenuItemStyleData(
+                        height: 40.h,
+                      ),
+                    ),
+                  ),
                 ),
+
+                // !----------------------Address Field------------------------
+                // TextFormField(
+                //   style: GoogleFonts.inter(
+                //     fontSize: 18.0,
+                //     color: const Color(0xFF151624),
+                //   ),
+                //   controller: _addressController,
+                //   keyboardType: TextInputType.text,
+                //   decoration: AppStyle().textFieldDecoration(
+                //       "Enter your address", Icons.location_city_rounded),
+                //   validator: (value) {
+                //     if (!_validateAddress(value ?? '')) {
+                //       return 'Address is required';
+                //     }
+                //     return null;
+                //   },
+                // ),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -253,10 +317,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Get.snackbar('Error', 'Password is required');
                         return;
                       }
-                      if (_addressController.text.isEmpty) {
-                        Get.snackbar('Error', 'Address is required');
-                        return;
-                      }
+                      // if (_addressController.text.isEmpty) {
+                      //   Get.snackbar('Error', 'Address is required');
+                      //   return;
+                      // }
 
                       authController.isLoading(true);
 
@@ -264,7 +328,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         name: _nameController.text,
                         email: _emailController.text,
                         password: _passwordController.text,
-                        address: _addressController.text,
+                        address: selectedValue.toString(),
                         image: "",
                       );
                       authController.isLoading(false);
