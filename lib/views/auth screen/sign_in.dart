@@ -245,7 +245,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                 );
               }),
-              SizedBox(height: 15.h),
+              SizedBox(height: 10.h),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -277,9 +277,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 10.h),
               Center(child: signInGoogleFacebookButton()),
-              SizedBox(height: 20.h),
+              SizedBox(height: 10.h),
               Center(
                 child: RichText(
                   text: TextSpan(

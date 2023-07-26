@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, unused_element, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, unused_element, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'dart:async';
 
@@ -95,15 +95,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
             physics: AlwaysScrollableScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: size.height * 0.06,
+                  height: 80.h,
+                ),
+                Container(
+                  // color: Colors.red,
+                  width: double.infinity,
+                  height: 200.h,
+                  child: Image.asset(
+                    "assets/logo/logo.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
                 ),
                 Text.rich(
                   TextSpan(
                     style: GoogleFonts.inter(
-                      fontSize: 30.0,
+                      fontSize: 30.sp,
                       color: const Color(0xFF21899C),
                       letterSpacing: 2.000000061035156,
                     ),
@@ -132,7 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50.h,
+                  height: 20.h,
                 ),
 
                 // !----------------------Name Field------------------------
@@ -217,7 +229,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
                 Container(
-                  height: 80.h,
+                  height: 70.h,
                   decoration: BoxDecoration(
                     // Background color of the container
                     border: Border.all(
@@ -285,14 +297,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 //     return null;
                 //   },
                 // ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  'Creating an account means you\'re okay with our Terms of Services and our Privacy Policy',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black45),
-                ),
+                // SizedBox(
+                //   height: 10.h,
+                // ),
+                // Text(
+                //   'Creating an account means you\'re okay with our Terms of Services and our Privacy Policy',
+                //   textAlign: TextAlign.center,
+                //   style: TextStyle(color: Colors.black45),
+                // ),
                 SizedBox(
                   height: 20.h,
                 ),
@@ -335,7 +347,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                   );
                 }),
-                SizedBox(height: 15.h),
+                SizedBox(height: 10.h),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -368,9 +380,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20.h),
-                signInGoogleFacebookButton(),
-                SizedBox(height: 20.h),
+                SizedBox(height: 10.h),
+                Center(child: signInGoogleFacebookButton()),
+                SizedBox(height: 10.h),
                 Center(
                   child: RichText(
                     text: TextSpan(
@@ -393,6 +405,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 50.h,
                 ),
               ],
             ),

@@ -17,34 +17,30 @@ class _AdminNavHomeState extends State<AdminNavHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          StreamBuilder(
+      body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('users').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return Center(child: Text('Something went wrong'));
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
+      if (snapshot.hasError) {
+        return Center(child: Text('Something went wrong'));
+      }
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(child: CircularProgressIndicator());
+      }
 
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (BuildContext context, int index) {
-              DocumentSnapshot document = snapshot.data!.docs[index];
-              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-              var name = data['name'];
+      return ListView.builder(
+        itemCount: snapshot.data!.docs.length,
+        itemBuilder: (BuildContext context, int index) {
+          DocumentSnapshot document = snapshot.data!.docs[index];
+          Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+          var name = data['name'];
 
-              return ListTile(
-                title: Text(name),
-                // Add other widgets as needed for your list item
-              );
-            },
+          return ListTile(
+            title: Text(name),
+            // Add other widgets as needed for your list item
           );
         },
-      ),
-        ],
+      );
+        },
       ),
     );
   }
