@@ -8,9 +8,9 @@
 
    <application
         android:usesCleartextTraffic="true"
-        android:label="tour_application"
+        android:label="Bhromon"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyAT1-PB-awAjPkum67C4mYiOg4YiaGaLaM"/>
         <activity

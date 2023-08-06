@@ -83,13 +83,13 @@ class MyApp extends StatelessWidget {
                   iconTheme: IconThemeData(color: Colors.black),
                   titleTextStyle:
                       TextStyle(color: Colors.black, fontSize: 20.sp))),
-          // initialRoute: splash,
+          initialRoute: splash,
           getPages: getPages,
 
           // !-----------splash screen-----------------
 
-          // home: SplashScreen(),
-          home: AdminNavController(),
+          home: SplashScreen(),
+          // home: AdminNavController(),
         );
       },
     );

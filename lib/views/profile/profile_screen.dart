@@ -33,142 +33,142 @@ class _ProfileScreenState extends State<ProfileScreen> {
             padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
-                // StreamBuilder(
-                //   stream: FirebaseFirestore.instance
-                //       .collection('users')
-                //       .doc(FirebaseAuth.instance.currentUser!.uid)
-                //       .snapshots(),
-                //   builder: (BuildContext context,
-                //       AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>>
-                //           snapshot) {
-                //     if (!snapshot.hasData) {
-                //       return Center(
-                //         child: CircularProgressIndicator(),
-                //       );
-                //     } else {
-                //       var data = snapshot.data;
-                //       return Card(
-                //         elevation: 3,
-                //         color: Colors.white,
-                //         shape: RoundedRectangleBorder(
-                //             borderRadius: BorderRadius.circular(10)),
-                //         child: Padding(
-                //           padding: const EdgeInsets.all(10.0),
-                //           child: Column(
-                //             children: [
-                //               Row(
-                //                 children: [
-                //                   Stack(
-                //                     children: [
-                //                       ClipOval(
-                //                         clipBehavior: Clip.hardEdge,
-                //                         child: GestureDetector(
-                //                           onTap: () async {
-                //                             // Use Navigator to show a full-screen image page
-                //                             await Navigator.push(
-                //                               context,
-                //                               MaterialPageRoute(
-                //                                 builder: (context) => Scaffold(
-                //                                   backgroundColor: Colors.grey,
-                //                                   body: Center(
-                //                                     child: Hero(
-                //                                         tag: 'user-avatar',
-                //                                         child:
-                //                                             data['image_url'] !=
-                //                                                     ""
-                //                                                 ? Image.network(
-                //                                                     data[
-                //                                                         'image_url'],
-                //                                                     // width: 100,
-                //                                                     // height: 100,
-                //                                                     fit: BoxFit
-                //                                                         .cover,
-                //                                                   )
-                //                                                 : Image.asset(
-                //                                                     "assets/avatar.png",
-                //                                                     height: 100,
-                //                                                     width: 100,
-                //                                                   )),
-                //                                   ),
-                //                                 ),
-                //                               ),
-                //                             );
-                //                           },
-                //                           child: Hero(
-                //                               tag: 'user-avatar',
-                //                               child: data!['image_url'] != ""
-                //                                   ? Image.network(
-                //                                       data['image_url'],
-                //                                       width: 100,
-                //                                       height: 100,
-                //                                       fit: BoxFit.cover,
-                //                                     )
-                //                                   : Image.asset(
-                //                                       "assets/avatar.png",
-                //                                       height: 100,
-                //                                       width: 100,
-                //                                     )),
-                //                         ),
-                //                       ),
-                //                       Positioned(
-                //                         bottom: -12,
-                //                         right: -15,
-                //                         child: IconButton(
-                //                           onPressed: () async {
-                //                             Navigator.push(
-                //                                 context,
-                //                                 MaterialPageRoute(
-                //                                     builder: (_) =>
-                //                                         ProfileEditScreen()));
-                //                           },
-                //                           icon: Icon(
-                //                             Icons.edit,
-                //                             color: Colors.black,
-                //                             size: 30.sp,
-                //                           ),
-                //                         ),
-                //                       ),
-                //                     ],
-                //                   ),
-                //                   const SizedBox(width: 20),
-                //                   Expanded(
-                //                       child: Column(
-                //                     crossAxisAlignment:
-                //                         CrossAxisAlignment.start,
-                //                     children: [
-                //                       Padding(
-                //                         padding: const EdgeInsets.all(1),
-                //                         child: Text(
-                //                           data['name'],
-                //                           style: GoogleFonts.lato(fontSize: 25),
-                //                         ),
-                //                       ),
-                //                       Padding(
-                //                         padding:
-                //                             EdgeInsets.only(left: 2, bottom: 5),
-                //                         child: Text(data['email']),
-                //                       ),
-                //                       Padding(
-                //                         padding:
-                //                             EdgeInsets.only(left: 2, bottom: 5),
-                //                         child: Text(data['phone_number']),
-                //                       ),
-                //                       Padding(
-                //                         padding:
-                //                             EdgeInsets.only(left: 2, bottom: 5),
-                //                         child: Text(data['address']),
-                //                       ),
-                //                     ],
-                //                   )),
-                //                 ],
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       );
-                //     }
-                //   },
-                // ),
+                StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(FirebaseAuth.instance.currentUser!.uid)
+                      .snapshots(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>>
+                          snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      var data = snapshot.data;
+                      return Card(
+                        elevation: 3,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Stack(
+                                    children: [
+                                      ClipOval(
+                                        clipBehavior: Clip.hardEdge,
+                                        child: GestureDetector(
+                                          onTap: () async {
+                                            // Use Navigator to show a full-screen image page
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Scaffold(
+                                                  backgroundColor: Colors.grey,
+                                                  body: Center(
+                                                    child: Hero(
+                                                        tag: 'user-avatar',
+                                                        child:
+                                                            data['image_url'] !=
+                                                                    ""
+                                                                ? Image.network(
+                                                                    data[
+                                                                        'image_url'],
+                                                                    // width: 100,
+                                                                    // height: 100,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  )
+                                                                : Image.asset(
+                                                                    "assets/avatar.png",
+                                                                    height: 100,
+                                                                    width: 100,
+                                                                  )),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Hero(
+                                              tag: 'user-avatar',
+                                              child: data!['image_url'] != ""
+                                                  ? Image.network(
+                                                      data['image_url'],
+                                                      width: 100,
+                                                      height: 100,
+                                                      fit: BoxFit.cover,
+                                                    )
+                                                  : Image.asset(
+                                                      "assets/avatar.png",
+                                                      height: 100,
+                                                      width: 100,
+                                                    )),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        bottom: -12,
+                                        right: -15,
+                                        child: IconButton(
+                                          onPressed: () async {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        ProfileEditScreen()));
+                                          },
+                                          icon: Icon(
+                                            Icons.edit,
+                                            color: Colors.black,
+                                            size: 30.sp,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(1),
+                                        child: Text(
+                                          data['name'],
+                                          style: GoogleFonts.lato(fontSize: 25),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 2, bottom: 5),
+                                        child: Text(data['email']),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 2, bottom: 5),
+                                        child: Text(data['phone_number']),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 2, bottom: 5),
+                                        child: Text(data['address']),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
                 SizedBox(
                   height: 10.h,
                 ),

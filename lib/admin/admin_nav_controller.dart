@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
 import 'package:tour_application/admin/admin_all_user.dart';
 
-import 'admin_nav_home.dart';
+import 'admin_all_tour.dart';
 
 class AdminNavController extends StatefulWidget {
   @override
@@ -13,9 +13,9 @@ class AdminNavController extends StatefulWidget {
 }
 
 class _AdminNavControllerState extends State<AdminNavController> {
-  RxInt _currentIndex = 0.obs;
+  RxInt _currentIndex = 1.obs;
 
-  final _pages = [AdminAllUser(), AdminNavHome(), AdminNavHome()];
+  final _pages = [AdminAllUser(), AdminAllTour(), AdminAllTour()];
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _AdminNavControllerState extends State<AdminNavController> {
                       BottomNavigationBarItem(
                           icon: Icon(Icons.person), label: "User"),
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.home_outlined), label: "Home"),
+                          icon: Icon(Icons.place_sharp), label: "Place"),
                       BottomNavigationBarItem(
                           icon: Icon(Icons.person), label: "Profile"),
                     ]),
