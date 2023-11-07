@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:tour_application/views/SelectTourPlaces/sea_place.dart';
 import 'package:tour_application/views/SelectTourPlaces/hill_place.dart';
 import 'package:tour_application/views/SelectTourPlaces/all_tour_places.dart';

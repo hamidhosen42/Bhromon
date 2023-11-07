@@ -2,11 +2,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:tour_application/views/SeeAllTours/see_park.dart';
 import '../views/Authentication/ForgotScreen/forgot_screen.dart';
 import '../views/Authentication/LoginScreen/login_screen.dart';
 import '../views/Authentication/RegisterScreen/register_screen.dart';
 import '../views/HomeScreen/home_appbar.dart';
-import '../views/HomeScreen/see-all_park.dart';
 import '../views/OnboardingScreen/onboarding_screen.dart';
 import '../views/SeeAllTours/see_hill.dart';
 import '../views/SeeAllTours/see_sea.dart';
