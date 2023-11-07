@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors, unused_local_variable, no_leading_underscores_for_local_identifiers, prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors, unused_local_variable, no_leading_underscores_for_local_identifiers, prefer_interpolation_to_compose_strings, avoid_print, use_build_context_synchronously
 
 import 'dart:io';
 
@@ -6,9 +6,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../styles/style.dart';
 import '../../widgets/violetButton.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -134,19 +135,21 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                       'phone_number': phoneController.text,
                       'address': addressController.text,
                     })
-                    .then(
-                      (value) => Fluttertoast.showToast(
-                        msg: "Updated Successfully",
-                        backgroundColor: Colors.black87,
-                      ),
-                    )
+                    .then((value) => showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.success(
+                            message: "Updated Successfully",
+                          ),
+                        ))
                     .then(
                       (value) => Get.back(),
                     );
               } catch (e) {
-                Fluttertoast.showToast(
-                  msg: "Something is wrong",
-                  backgroundColor: Colors.black87,
+                showTopSnackBar(
+                  Overlay.of(context),
+                  CustomSnackBar.error(
+                    message: "Something is wrong",
+                  ),
                 );
               }
             },

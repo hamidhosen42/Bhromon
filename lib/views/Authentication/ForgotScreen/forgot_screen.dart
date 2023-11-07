@@ -3,9 +3,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
@@ -37,29 +38,29 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Scaffold(
       appBar: AppBar(
         title: Text.rich(
-                  TextSpan(
-                    style: GoogleFonts.inter(
-                      fontSize: 30.0,
-                      color: const Color(0xFF21899C),
-                      letterSpacing: 2.000000061035156,
-                    ),
-                    children: const [
-                      TextSpan(
-                        text: 'RESET',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'PAGE',
-                        style: TextStyle(
-                          color: Color(0xFFFE9879),
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ],
-                  ),
+          TextSpan(
+            style: GoogleFonts.inter(
+              fontSize: 30.0,
+              color: const Color(0xFF21899C),
+              letterSpacing: 2.000000061035156,
+            ),
+            children: const [
+              TextSpan(
+                text: 'RESET',
+                style: TextStyle(
+                  fontWeight: FontWeight.w800,
                 ),
+              ),
+              TextSpan(
+                text: 'PAGE',
+                style: TextStyle(
+                  color: Color(0xFFFE9879),
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+        ),
         elevation: 0,
         scrolledUnderElevation: 0,
       ),
@@ -70,7 +71,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             SizedBox(
               height: size.height * 0.05,
             ),
-            
+
             // !-----------email text field--------------
             Padding(
               padding: const EdgeInsets.only(left: 15.0, right: 15),
@@ -83,26 +84,26 @@ class _ResetPasswordState extends State<ResetPassword> {
                   ),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.email,
-                        color: Colors.black45,
-                      ),
-                      hintText: "Enter your email",
-                      hintStyle: GoogleFonts.inter(
-                        fontSize: 16.0,
-                        color: const Color(0xFFABB3BB),
-                        height: 1.0,
-                      ),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    prefixIcon: const Icon(
+                      Icons.email,
+                      color: Colors.black45,
+                    ),
+                    hintText: "Enter your email",
+                    hintStyle: GoogleFonts.inter(
+                      fontSize: 16.0,
+                      color: const Color(0xFFABB3BB),
+                      height: 1.0,
+                    ),
+                  ),
                   controller: _emailController,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -120,10 +121,10 @@ class _ResetPasswordState extends State<ResetPassword> {
               padding: const EdgeInsets.all(20.0),
               child: Container(
                 width: double.infinity,
-                 decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: const Color(0xFF21899C),
-      ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: const Color(0xFF21899C),
+                ),
                 child: OutlinedButton(
                   onPressed: () async {
                     setState(() {
@@ -136,15 +137,24 @@ class _ResetPasswordState extends State<ResetPassword> {
                       auth
                           .sendPasswordResetEmail(email: _emailController.text)
                           .then((value) {
-                        Fluttertoast.showToast(
-                            msg:
-                                "We have sent you email to recover password, please check email");
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.success(
+                            message:
+                                "We have sent you email to recover password, please check email",
+                          ),
+                        );
                         Navigator.pop(context);
                       }).onError((error, stackTrace) {
                         setState(() {
                           loading = true;
                         });
-                        Fluttertoast.showToast(msg: error.toString());
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.error(
+                            message: error.toString(),
+                          ),
+                        );
                       });
                     }
                   },
@@ -153,7 +163,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                         horizontal: 20, vertical: 10),
                     child: Text(
                       'Submit',
-                      style:TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 25.sp,
                       ),

@@ -5,7 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:tour_application/views/Details_Screen/scrollsheet_screen.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _DetailScreenState extends State<DetailScreen>
         .collection("place")
         .doc();
 
-        String id = DateTime.now().microsecondsSinceEpoch.toString();
+    String id = DateTime.now().microsecondsSinceEpoch.toString();
 
     ref.set({
       'location': widget.location,
@@ -55,9 +56,11 @@ class _DetailScreenState extends State<DetailScreen>
       'image': widget.imageList,
       'eat_hotal': widget.eat_hotal,
     }).then(
-      (value) => Fluttertoast.showToast(
-        msg: "Added to favourite place",
-        backgroundColor: Colors.black87,
+      (value) => showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.success(
+          message: "Added to favourite place",
+        ),
       ),
     );
   }
@@ -183,9 +186,11 @@ class _DetailScreenState extends State<DetailScreen>
                                 ),
                           onPressed: () => snapshot.data!.docs.length == 0
                               ? addToFavourite()
-                              : Fluttertoast.showToast(
-                                  msg: "Already Added",
-                                  backgroundColor: Colors.black87,
+                              : showTopSnackBar(
+                                  Overlay.of(context),
+                                  CustomSnackBar.error(
+                                    message: "Already Added",
+                                  ),
                                 ),
                         );
                       }),

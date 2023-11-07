@@ -1,11 +1,12 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../route/route.dart';
 import '../../theme/app_theme.dart';
@@ -24,10 +25,14 @@ class Settings extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () async {
-                      await FirebaseAuth.instance.signOut().then(
-                            (value) => Fluttertoast.showToast(
-                                msg: "Logout Successfull."),
-                          );
+                      await FirebaseAuth.instance
+                          .signOut()
+                          .then((value) => showTopSnackBar(
+                                Overlay.of(context),
+                                CustomSnackBar.success(
+                                  message: " Logout Successfull.",
+                                ),
+                              ));
                       await box.remove('uid');
                       Get.toNamed(splash);
                     },

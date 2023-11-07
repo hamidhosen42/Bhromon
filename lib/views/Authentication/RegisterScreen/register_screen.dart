@@ -12,12 +12,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../../../controllers/text_field_controller.dart';
-import '../../back_end/auth.dart';
-import '../../route/route.dart';
-import '../../styles/style.dart';
-import '../../widgets/violetButton.dart';
+import '../../../../controllers/text_field_controller.dart';
+import '../../../back_end/auth.dart';
+import '../../../route/route.dart';
+import '../../../styles/style.dart';
+import '../../../widgets/violetButton.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -204,13 +206,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       suffixIcon: IconButton(
                         icon: Icon(
                           _controller.isPasswordHiden.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                           color: Colors.black45,
                         ),
                         onPressed: () {
-                          _controller.isPasswordHiden.value =
-                              !_controller.isPasswordHiden.value;
+                          setState(() {
+                            _controller.isPasswordHiden.value =
+                                !_controller.isPasswordHiden.value;
+                          });
                         },
                       ),
                     ),
@@ -315,17 +319,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     title: 'Create Account',
                     onAction: () async {
                       if (_nameController.text.isEmpty) {
-                        Get.snackbar('Error', 'Name is required');
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.error(
+                            message: "Name is required",
+                          ),
+                        );
                         return;
                       }
 
                       if (_emailController.text.isEmpty) {
-                        Get.snackbar('Error', 'Email is required');
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.error(
+                            message: "Email is required",
+                          ),
+                        );
                         return;
                       }
 
                       if (_passwordController.text.isEmpty) {
-                        Get.snackbar('Error', 'Password is required');
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.error(
+                            message: "Password is required",
+                          ),
+                        );
                         return;
                       }
                       // if (_addressController.text.isEmpty) {
@@ -336,6 +355,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       authController.isLoading(true);
 
                       await authController.registration(
+                        context: context,
                         name: _nameController.text,
                         email: _emailController.text,
                         password: _passwordController.text,

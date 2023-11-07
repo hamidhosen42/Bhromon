@@ -1,14 +1,15 @@
-// ignore_for_file: prefer_const_constructors, unused_import, no_leading_underscores_for_local_identifiers, unused_local_variable
+// ignore_for_file: prefer_const_constructors, unused_import, no_leading_underscores_for_local_identifiers, unused_local_variable, use_build_context_synchronously
 
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../admin/nav_home.dart';
 import '../model/user_model.dart';
@@ -19,6 +20,7 @@ class AuthController extends GetxController {
   var isLoading = false.obs;
 
   Future<void> registration({
+    required BuildContext context,
     required String name,
     required String email,
     required String password,
@@ -38,8 +40,12 @@ class AuthController extends GetxController {
         // Send email verification
         await userCredential.user!.sendEmailVerification();
 
-        Fluttertoast.showToast(
-            msg: 'Please check your email for verification.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.success(
+            message: "Please check your email for verification.",
+          ),
+        );
 
         // No redirect to home screen yet
         // After saving user info, check email verification status
@@ -61,19 +67,43 @@ class AuthController extends GetxController {
 
         Get.toNamed(signIn);
       } else {
-        Fluttertoast.showToast(msg: 'Please enter all the fields');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "Please enter all the fields.",
+          ),
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Fluttertoast.showToast(msg: 'The password provided is too weak.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "The password provided is too weak",
+          ),
+        );
       } else if (e.code == 'email-already-in-use') {
-        Fluttertoast.showToast(
-            msg: 'The account already exists for that email.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "The account already exists for that email.",
+          ),
+        );
       } else if (e.code == 'invalid-email') {
-        Fluttertoast.showToast(msg: 'Please enter a valid email.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "Please enter a valid email.",
+          ),
+        );
       }
     } catch (e) {
-      Fluttertoast.showToast(msg: 'Error: $e');
+      showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.error(
+          message: e.toString(),
+        ),
+      );
     }
   }
 
@@ -83,38 +113,75 @@ class AuthController extends GetxController {
       required String email,
       required String password}) async {
     try {
-
       if (email.isNotEmpty && password.isNotEmpty) {
         // !------admin login------------
         UserCredential userCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
         var authCredential = userCredential.user;
         if (authCredential!.uid.isNotEmpty) {
-
-                  
           if (authCredential.emailVerified) {
-            Fluttertoast.showToast(msg: 'Login Successful');
+            showTopSnackBar(
+              Overlay.of(context),
+              CustomSnackBar.success(
+                message: "Login Successful",
+              ),
+            );
             Get.toNamed(home_screen);
           } else {
-            Fluttertoast.showToast(
-                msg: 'Email not verified. Please check your email and verify.');
+            showTopSnackBar(
+              Overlay.of(context),
+              CustomSnackBar.error(
+                message:
+                    "Email not verified. Please check your email and verify",
+              ),
+            );
           }
         } else {
-          Fluttertoast.showToast(msg: 'Something went wrong!');
+          showTopSnackBar(
+            Overlay.of(context),
+            CustomSnackBar.error(
+              message: "Something went wrong!",
+            ),
+          );
         }
       } else {
-        Fluttertoast.showToast(msg: "Please enter all the fields");
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "Please enter all the fields",
+          ),
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Fluttertoast.showToast(msg: 'No user found for that email.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "No user found for that email",
+          ),
+        );
       } else if (e.code == 'wrong-password') {
-        Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "Wrong password provided for that user.",
+          ),
+        );
       } else if (e.code == 'invalid-email') {
-        Fluttertoast.showToast(msg: 'Please enter a valid email.');
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: "Please enter a valid email.",
+          ),
+        );
       }
     } catch (e) {
-      Fluttertoast.showToast(msg: 'Error: $e');
+      showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.error(
+          message: 'Error: $e',
+        ),
+      );
     }
   }
 
@@ -151,17 +218,20 @@ class AuthController extends GetxController {
           .collection('users')
           .doc(_user.uid)
           .set(userModel.toJson());
-      Fluttertoast.showToast(msg: 'Google Login Successfull');
+      showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.error(
+          message: "Google Login Successfull",
+        ),
+      );
       Get.toNamed(home_screen);
     } else {
-      Fluttertoast.showToast(msg: 'Sometimes is wrong');
+      showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.error(
+          message: "Sometimes is wrong",
+        ),
+      );
     }
-  }
-
-  //for logout
-  signOut() async {
-    await FirebaseAuth.instance.signOut();
-    Fluttertoast.showToast(msg: 'Log out');
-    // Get.offAll(() => SignInScreen());
   }
 }

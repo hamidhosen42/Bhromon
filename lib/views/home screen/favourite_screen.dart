@@ -4,8 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class FavouriteScreen extends StatefulWidget {
   const FavouriteScreen({super.key});
@@ -127,19 +128,21 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                             querySnapshot.docs.forEach((doc) {
                                               doc.reference.delete();
                                             });
-
-                                            Fluttertoast.showToast(
-                                              msg:
-                                                  "Place deleted successfully",
-                                              backgroundColor: Colors.black87,
+                                            showTopSnackBar(
+                                              Overlay.of(context),
+                                              CustomSnackBar.success(
+                                                message:
+                                                    "Place deleted successfully",
+                                              ),
                                             );
-                                          }).catchError((error) =>
-                                                  Fluttertoast.showToast(
-                                                    msg:
-                                                        " Failed to delete place: $error",
-                                                    backgroundColor:
-                                                        Colors.black87,
-                                                  ));
+                                          }).catchError(
+                                                  (error) => showTopSnackBar(
+                                                        Overlay.of(context),
+                                                        CustomSnackBar.error(
+                                                          message:
+                                                              " Failed to delete place: $error",
+                                                        ),
+                                                      ));
                                         },
                                       )),
                                 ),

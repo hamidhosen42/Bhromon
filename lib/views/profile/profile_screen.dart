@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:tour_application/route/route.dart';
-import 'package:tour_application/views/auth%20screen/sign_in.dart';
+import 'package:tour_application/views/Authentication/LoginScreen/login_screen.dart';
 import 'package:tour_application/views/profile/profile_edit_screen.dart';
 
 import '../../main.dart';
@@ -369,6 +371,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     await FirebaseAuth.instance.signOut();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => SignInScreen()));
+
+                    showTopSnackBar(
+                      Overlay.of(context),
+                      CustomSnackBar.error(
+                        message: "'Log out",
+                      ),
+                    );
                   },
                   child: Card(
                     color: Colors.grey[200],

@@ -10,7 +10,7 @@ import 'package:tour_application/route/route.dart';
 import 'package:tour_application/theme/theme_manager.dart';
 import 'package:get/get.dart';
 import 'admin/admin_nav_controller.dart';
-import 'views/splash screen/splash_screen.dart';
+import 'views/SplashScreen/splash_screen.dart';
 
 // themeManager.themeMode == ThemeMode.light? Colors.black : Colors.white
 
@@ -39,7 +39,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-
       //! Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {

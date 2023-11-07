@@ -47,7 +47,6 @@ dependencies:
   firebase_storage: any
   get_storage: any
   # syncfusion_flutter_pdfviewer: any
-  fluttertoast: any
   carousel_slider: any
   image_picker: any
   launch_review: any
@@ -80,6 +79,7 @@ dependencies:
   path_provider:
   baseflow_plugin_template: any
   dropdown_button2: 
+  top_snackbar_flutter:
 
 dev_dependencies:
   flutter_test:

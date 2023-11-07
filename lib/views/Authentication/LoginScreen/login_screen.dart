@@ -11,12 +11,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../../back_end/auth.dart';
-import '../../route/route.dart';
-import '../../styles/style.dart';
-import '../../widgets/violetButton.dart';
-import '../../controllers/text_field_controller.dart';
+import '../../../back_end/auth.dart';
+import '../../../route/route.dart';
+import '../../../styles/style.dart';
+import '../../../widgets/violetButton.dart';
+import '../../../controllers/text_field_controller.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -86,7 +88,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Container(
                 // color: Colors.red,
                 width: double.infinity,
-                 height: 250.h,
+                height: 250.h,
                 child: Image.asset(
                   "assets/logo/logo.png",
                   fit: BoxFit.cover,
@@ -177,13 +179,15 @@ class _SignInScreenState extends State<SignInScreen> {
                     suffixIcon: IconButton(
                       icon: Icon(
                         _controller.isPasswordHiden.value
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: Colors.black45,
                       ),
                       onPressed: () {
-                        _controller.isPasswordHiden.value =
-                            !_controller.isPasswordHiden.value;
+                        setState(() {
+                          _controller.isPasswordHiden.value =
+                              !_controller.isPasswordHiden.value;
+                        });
                       },
                     ),
                   ),
@@ -220,13 +224,23 @@ class _SignInScreenState extends State<SignInScreen> {
                   onAction: () async {
                     if (_emailController.text.isEmpty) {
                       // Show an error message for invalid email
-                      Get.snackbar('Error', 'Email is required');
+                      showTopSnackBar(
+                        Overlay.of(context),
+                        CustomSnackBar.error(
+                          message: "Email is required",
+                        ),
+                      );
                       return;
                     }
 
                     if (_passwordController.text.isEmpty) {
                       // Show an error message for invalid password
-                      Get.snackbar('Error', 'Password is required');
+                      showTopSnackBar(
+                        Overlay.of(context),
+                        CustomSnackBar.error(
+                          message: "Password is required",
+                        ),
+                      );
                       return;
                     }
 
