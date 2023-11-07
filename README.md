@@ -70,4 +70,4 @@ flutter run
 ```
 
 ### App UI :
-https://github.com/hamidhosen42/Bhromon/blob/main/assets/cover.png
+<img src="https://github.com/hamidhosen42/Bhromon/blob/main/assets/cover.png">
