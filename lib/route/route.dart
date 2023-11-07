@@ -2,25 +2,20 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:tour_application/admin/admin_nav_controller.dart';
-
-import '../admin/admin_home_screen.dart';
-import '../admin/nav_home.dart';
-import '../admin/see-all_park.dart';
-import '../admin/see_all_sea.dart';
-import '../admin/see_all_topplace.dart';
 import '../views/Authentication/ForgotScreen/forgot_screen.dart';
 import '../views/Authentication/LoginScreen/login_screen.dart';
 import '../views/Authentication/RegisterScreen/register_screen.dart';
-import '../views/drawer_pages/faq_screen.dart';
-import '../views/drawer_pages/how_to_use.dart';
-import '../views/drawer_pages/privacy_policy_screen.dart';
-import '../views/drawer_pages/settings.dart';
-import '../views/drawer_pages/support_screen.dart';
-import '../views/home screen/home_screen.dart';
-import '../views/home screen/see_all_hill.dart';
+import '../views/HomeScreen/home_appbar.dart';
+import '../views/HomeScreen/see-all_park.dart';
 import '../views/OnboardingScreen/onboarding_screen.dart';
+import '../views/SeeAllTours/see_hill.dart';
+import '../views/SeeAllTours/see_sea.dart';
+import '../views/SeeAllTours/see_top_place.dart';
 import '../views/SplashScreen/splash_screen.dart';
+import '../views/profile/faq_screen.dart';
+import '../views/profile/privacy_policy_screen.dart';
+import '../views/profile/settings.dart';
+import '../views/profile/support_screen.dart';
 
 const String splash = "/splash_screen";
 const String onboarding = "/onboarding_screen";
@@ -33,7 +28,7 @@ const String home_screen = '/home-screen';
 const String see_all_topplace = '/see-all-topplace';
 const String see_all_hill = '/see-all-hill';
 const String see_all_sea = '/see-all-sea';
-const String see_all_park ="/see-all-park";
+const String see_all_park = "/see-all-park";
 const String supportScreen = '/support-screen';
 const String privacyScreen = '/privacy-screen';
 const String faqScreen = '/faq-screen';
@@ -45,16 +40,14 @@ const String seeAllScreen = '/seeAll-screen';
 const String detailsScreen = '/details-screen';
 const String navAddLastStep = '/navAddLastStep-screen';
 
-
 // !admin-----------------------------
 const String adminHome = '/admin_home';
 const String adminNavController = '/admin_nav_controller';
 
-
 // control our page  route flow
 late User _user;
 List<GetPage> getPages = [
-  GetPage(name: splash, page: () =>SplashScreen()),
+  GetPage(name: splash, page: () => SplashScreen()),
   GetPage(name: onboarding, page: () => OnboardingScreen()),
   GetPage(name: signUp, page: () => SignUpScreen()),
   GetPage(name: signIn, page: () => SignInScreen()),
@@ -64,11 +57,10 @@ List<GetPage> getPages = [
   GetPage(name: see_all_sea, page: () => AllSeaPlace()),
   GetPage(name: see_all_park, page: () => SeeAllPark()),
   GetPage(name: supportScreen, page: () => Support()),
-  // GetPage(name: userForm, page: () => UserForm()),
   GetPage(name: privacyPolicy, page: () => Privacy()),
   GetPage(
     name: home_screen,
-    page: () => HomeScreens(),
+    page: () => HomeAppScreen(),
   ),
   GetPage(
     name: supportScreen,
@@ -80,13 +72,13 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: faqScreen,
-    page: () =>FAQScreen(),
+    page: () => FAQScreen(),
   ),
   // GetPage(
   //   name: howToUseScreen,
   //   page: () => HowToUse(),
   // ),
-    GetPage(
+  GetPage(
     name: settingsScreen,
     page: () => Settings(),
   ),
@@ -98,9 +90,6 @@ List<GetPage> getPages = [
     },
   ),
 
-  // !----------admin-----------------
-  GetPage(name: adminHome, page: ()=>AdminHomeScreens()),
-  GetPage(name: adminNavController, page: ()=>AdminNavController()),
 
   // GetPage(
   //   name: navAddLastStep,

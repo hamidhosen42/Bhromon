@@ -7,7 +7,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../views/Details_Screen/detail_screen.dart';
+import '../Details_Screen/detail_screen.dart';
 
 class ParkPlace extends StatefulWidget {
   const ParkPlace({super.key});

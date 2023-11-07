@@ -6,14 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../constant/app_string.dart';
-import 'nav_controller.dart';
+import '../BottomBavBarView/bottom_view.dart';
 
-class HomeScreens extends StatefulWidget {
+class HomeAppScreen extends StatefulWidget {
   @override
-  State<HomeScreens> createState() => _HomeScreensState();
+  State<HomeAppScreen> createState() => _HomeAppScreenState();
 }
 
-class _HomeScreensState extends State<HomeScreens> {
+class _HomeAppScreenState extends State<HomeAppScreen> {
   Future _exitDialog(context) {
     return showDialog(
         context: context,

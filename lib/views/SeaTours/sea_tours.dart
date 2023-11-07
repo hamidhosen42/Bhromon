@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../views/Details_Screen/detail_screen.dart';
+import '../Details_Screen/detail_screen.dart';
 
-class SeaTours extends StatefulWidget {
-  const SeaTours({super.key});
+class SeaPlaces extends StatefulWidget {
+  const SeaPlaces({super.key});
 
   @override
-  State<SeaTours> createState() => _SeaToursState();
+  State<SeaPlaces> createState() => _SeaPlacesState();
 }
 
-class _SeaToursState extends State<SeaTours> {
+class _SeaPlacesState extends State<SeaPlaces> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(

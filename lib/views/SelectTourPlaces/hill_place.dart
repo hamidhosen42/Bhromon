@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, depend_on_referenced_packages
+// ignore_for_file: prefer_const_constructors
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,51 +6,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rxdart/rxdart.dart';
 
-import '../views/Details_Screen/detail_screen.dart';
+import '../Details_Screen/detail_screen.dart';
 
-class TourWidget extends StatefulWidget {
+class HillPlace extends StatefulWidget {
+  const HillPlace({super.key});
+
   @override
-  State<TourWidget> createState() => _TourWidgetState();
+  State<HillPlace> createState() => _HillPlaceState();
 }
 
-class _TourWidgetState extends State<TourWidget> {
-  late Stream<List<QueryDocumentSnapshot>> streamsCombined;
-
-  @override
-  void initState() {
-    super.initState();
-    streamsCombined = CombineLatestStream.list([
-      FirebaseFirestore.instance.collection('all-hill').snapshots(),
-      FirebaseFirestore.instance.collection('all-sea').snapshots(),
-      FirebaseFirestore.instance.collection('all-park').snapshots(),
-      // Add more streams here if needed
-    ]).map((List<QuerySnapshot> snapshots) {
-      // Combine the query snapshots from different collections
-      return snapshots.expand((snapshot) => snapshot.docs).toList();
-    });
-  }
-
+class _HillPlaceState extends State<HillPlace> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<QueryDocumentSnapshot>>(
-      stream: streamsCombined,
-      builder: (BuildContext context,
-          AsyncSnapshot<List<QueryDocumentSnapshot>> snapshot) {
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection('all-hill').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Center(child: Text('Something went wrong'));
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
-        List<QueryDocumentSnapshot> documents = snapshot.data ?? [];
         return ListView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          itemCount: documents.length,
+          itemCount: snapshot.data!.docs.length,
           itemBuilder: (BuildContext context, int index) {
-            DocumentSnapshot document = documents[index];
+            DocumentSnapshot document = snapshot.data!.docs[index];
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
             var name = data['name'];
@@ -88,19 +71,19 @@ class _TourWidgetState extends State<TourWidget> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(15)),
                               child: CachedNetworkImage(
-                            imageUrl: data['image'],
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            height: 180.h,
-                            filterQuality: FilterQuality.high,
-                            placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.blue,
+                                imageUrl: data['image'],
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: 180.h,
+                                filterQuality: FilterQuality.high,
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
                               ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
                             ),
                             // Positioned(
                             //   top: 0,
@@ -109,38 +92,40 @@ class _TourWidgetState extends State<TourWidget> {
                             //     padding: const EdgeInsets.all(8.0),
                             //     child: Container(
                             //         decoration: const BoxDecoration(
-                            //             borderRadius:
-                            //                 BorderRadius.all(Radius.circular(50)),
+                            //             borderRadius: BorderRadius.all(
+                            //                 Radius.circular(50)),
                             //             color: Colors.black12),
                             //         child: IconButton(
-                            //           icon:
-                            //               Icon(Icons.favorite, color: Colors.white,size: 30.sp,),
+                            //           icon: Icon(
+                            //             Icons.favorite,
+                            //             color: Colors.white,
+                            //             size: 30.sp,
+                            //           ),
                             //           onPressed: () async {},
                             //         )),
                             //   ),
                             // ),
                             Positioned(
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(15),
-                                          topRight: Radius.circular(15)),
-                                      color: Colors.black54),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Text(
-                                      data['name'],
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                      ),
+                                child: Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        bottomRight: Radius.circular(15),
+                                        topRight: Radius.circular(15)),
+                                    color: Colors.black54),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    data['name'],
+                                    style: GoogleFonts.lato(
+                                      color: Colors.white,
+                                      fontSize: 22,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
+                            )),
                           ],
                         ),
                         Padding(

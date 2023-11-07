@@ -3,19 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:tour_application/widgets/SeaTours.dart';
-import 'package:tour_application/widgets/HillTours.dart';
-import 'package:tour_application/widgets/tour_widget.dart';
+import 'package:tour_application/views/SelectTourPlaces/sea_place.dart';
+import 'package:tour_application/views/SelectTourPlaces/hill_place.dart';
+import 'package:tour_application/views/SelectTourPlaces/all_tour_places.dart';
 
-import '../../widgets/ParkTour.dart';
+import 'park_place.dart';
 
-class SelectList extends StatefulWidget {
+class SelectTourPlaces extends StatefulWidget {
   @override
   // ignore: no_logic_in_create_state
-  State<SelectList> createState() => _SelectListState();
+  State<SelectTourPlaces> createState() => _SelectTourPlacesState();
 }
 
-class _SelectListState extends State<SelectList> {
+class _SelectTourPlacesState extends State<SelectTourPlaces> {
   List<String> items = [
     "All",
     "HillTours",
@@ -24,7 +24,7 @@ class _SelectListState extends State<SelectList> {
   ];
   int current = 0;
 
-  _SelectListState();
+  _SelectTourPlacesState();
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _SelectListState extends State<SelectList> {
               }),
         ),
         if (current == 0)
-          Consumer(builder: (context, value, _) => TourWidget()),
+          Consumer(builder: (context, value, _) => AllTourPlaces()),
         if (current == 1) Consumer(builder: (context, value, _) => HillPlace()),
         if (current == 2) Consumer(builder: (context, value, _) => SeaPlace()),
         if (current == 3) Consumer(builder: (context, value, _) => ParkPlace()),

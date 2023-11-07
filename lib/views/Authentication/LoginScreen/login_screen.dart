@@ -14,7 +14,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../../../back_end/auth.dart';
+import '../../../db/auth.dart';
 import '../../../route/route.dart';
 import '../../../styles/style.dart';
 import '../../../widgets/violetButton.dart';

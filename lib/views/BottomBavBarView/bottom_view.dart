@@ -1,12 +1,12 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, prefer_final_fields, prefer_const_literals_to_create_immutables, unrelated_type_equality_checks, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, prefer_final_fields, prefer_const_literals_to_create_immutables, unrelated_type_equality_checks, sized_box_for_whitespace, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
 import 'package:tour_application/views/profile/profile_screen.dart';
 
-import '../views/home screen/nav_home.dart';
-import 'favourite_screen.dart';
+import '../FavouriteScreen/favourite_screen.dart';
+import '../HomeScreen/home_screen.dart';
 
 class BottomNavController extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class BottomNavController extends StatefulWidget {
 class _BottomNavControllerState extends State<BottomNavController> {
   RxInt _currentIndex = 0.obs;
 
-  final _pages = [NavHome(), FavouriteScreen(), ProfileScreen()];
+  final _pages = [HomeScreen(), FavouriteScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {

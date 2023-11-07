@@ -5,20 +5,21 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tour_application/views/home%20screen/selectlist_screen.dart';
+import 'package:tour_application/views/SelectTourPlaces/select_tour_places.dart';
+import 'package:tour_application/views/TourCategories/tour_categories.dart';
 
 import '../../route/route.dart';
-import '../../widgets/hill_widget.dart';
-import '../../widgets/nav_home_categories.dart';
-import '../../widgets/park_widget.dart';
-import '../../widgets/sea_widget.dart';
-import '../../widgets/top-widget.dart';
-class NavHome extends StatefulWidget {
+import '../HillTours/hill_tours.dart';
+import '../PartTours/park_tours.dart';
+import '../SeaTours/sea_tours.dart';
+import '../TopTours/top-tours.dart';
+
+class HomeScreen extends StatefulWidget {
   @override
-  State<NavHome> createState() => _NavHomeState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _NavHomeState extends State<NavHome> {
+class _HomeScreenState extends State<HomeScreen> {
   final RxInt _currentIndex = 0.obs;
 
   final List _carouselImages = [
@@ -33,14 +34,14 @@ class _NavHomeState extends State<NavHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body:  SingleChildScrollView(
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         physics: BouncingScrollPhysics(),
         // physics: ClampingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(height: 5.h),
-      
+
             // !-----------------CarouselSlider---------------------
             StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
@@ -78,7 +79,7 @@ class _NavHomeState extends State<NavHome> {
                 );
               },
             ),
-      
+
             SizedBox(
               height: 5.h,
             ),
@@ -89,9 +90,9 @@ class _NavHomeState extends State<NavHome> {
                 position: _currentIndex.value.toDouble(),
               ),
             ),
-      
+
             // !---------------------Top Place--------------
-            navHomeCategories(
+            TourCategories(
               "Top Tours",
               () => Get.toNamed(see_all_topplace),
             ),
@@ -102,40 +103,40 @@ class _NavHomeState extends State<NavHome> {
             SizedBox(
               height: 5.h,
             ),
-      
+
             //! ---------------------Hill Tours--------------
-            navHomeCategories(
+            TourCategories(
               "Hill Tours",
               () => Get.toNamed(see_all_hill),
             ),
             SizedBox(
               height: 5.h,
             ),
-            AllHillWidget(),
+            HillPlaces(),
             SizedBox(
               height: 5.h,
             ),
             //! ---------------------Sea Places--------------
-            navHomeCategories(
+            TourCategories(
               "Sea Tours",
               () => Get.toNamed(see_all_sea),
             ),
             SizedBox(
               height: 5.h,
             ),
-            SeaTours(),
+            SeaPlaces(),
             SizedBox(
               height: 5.h,
             ),
-      
+
             // !----------------Park Places------------------
-            navHomeCategories("Park Tours", ()=>Get.toNamed(see_all_park)),
-            ParkTour(),
-      
+            TourCategories("Park Tours", () => Get.toNamed(see_all_park)),
+            ParkPlaces(),
+
             SizedBox(
               height: 10.h,
             ),
-            SelectList(),
+            SelectTourPlaces(),
           ],
         ),
       ),
@@ -143,7 +144,7 @@ class _NavHomeState extends State<NavHome> {
   }
 }
 
-          // navHomeCategories(
+          // HomeScreenCategories(
           //   "Top Places",
           //   () => Get.toNamed(seeAllScreen, arguments: SeeAll('top_places')),
           // ),

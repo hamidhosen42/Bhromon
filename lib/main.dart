@@ -9,7 +9,6 @@ import 'package:tour_application/constant/app_string.dart';
 import 'package:tour_application/route/route.dart';
 import 'package:tour_application/theme/theme_manager.dart';
 import 'package:get/get.dart';
-import 'admin/admin_nav_controller.dart';
 import 'views/SplashScreen/splash_screen.dart';
 
 // themeManager.themeMode == ThemeMode.light? Colors.black : Colors.white
@@ -88,7 +87,6 @@ class MyApp extends StatelessWidget {
           // !-----------splash screen-----------------
 
           home: SplashScreen(),
-          // home: AdminNavController(),
         );
       },
     );

@@ -10,7 +10,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:tour_application/route/route.dart';
 import 'package:tour_application/views/Authentication/LoginScreen/login_screen.dart';
-import 'package:tour_application/views/profile/profile_edit_screen.dart';
+import 'package:tour_application/views/profile/profile_edit.dart';
 
 import '../../main.dart';
 
