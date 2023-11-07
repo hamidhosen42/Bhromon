@@ -14,7 +14,7 @@ flutter pub get
 flutter run
 ```
 ### [Firebase](https://console.firebase.google.com/u/0/project/tour-application-57625/firestore/data/~2Fall-hill~2F0RngiEVFmstZNqRK044a)
-### [APK](https://github.com/hamidhosen42/Bhromon/Bhromon.apk) 
+### [APK](https://github.com/hamidhosen42/Bhromon/blob/main/Bhromon.apk) 
 
 ### flutter packages:
 ```
@@ -70,4 +70,4 @@ flutter run
 ```
 
 ### App UI :
-![Bhromon](https://github.com/hamidhosen42/TravelTorch/assets/68488154/18331aa0-f2e5-49b7-b7ef-9d11fa5664d0)
+https://github.com/hamidhosen42/Bhromon/blob/main/assets/cover.png
