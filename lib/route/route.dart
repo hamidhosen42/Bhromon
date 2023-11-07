@@ -82,10 +82,10 @@ List<GetPage> getPages = [
     name: faqScreen,
     page: () =>FAQScreen(),
   ),
-  GetPage(
-    name: howToUseScreen,
-    page: () => HowToUse(),
-  ),
+  // GetPage(
+  //   name: howToUseScreen,
+  //   page: () => HowToUse(),
+  // ),
     GetPage(
     name: settingsScreen,
     page: () => Settings(),

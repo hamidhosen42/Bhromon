@@ -46,26 +46,25 @@ dependencies:
   firebase_auth: any
   firebase_storage: any
   get_storage: any
-  syncfusion_flutter_pdfviewer: ^20.1.52-beta
+  # syncfusion_flutter_pdfviewer: any
   fluttertoast: any
   carousel_slider: any
   image_picker: any
-  better_player: any
   launch_review: any
-  url_launcher: ^6.1.6
-  velocity_x: ^3.6.0
-  internet_connection_checker: ^1.0.0+1
-  connectivity_plus: ^3.0.2
+  url_launcher: any
+  velocity_x: any
+  internet_connection_checker: any
+  connectivity_plus: any
   onboarding: any
   flutter_walkthrough_screen:
-  provider: ^6.0.5
-  intl: ^0.17.0
-  week_day_picker: ^0.1.1
-  flutter_bounce: ^1.1.0
-  cached_network_image: ^3.2.3
-  flutter_rating_bar: ^4.0.1
-  persistent_bottom_nav_bar: ^5.0.2
-  font_awesome_flutter: ^10.4.0
+  provider: any
+  intl: any
+  week_day_picker: any
+  flutter_bounce: any
+  cached_network_image: any
+  flutter_rating_bar: any
+  persistent_bottom_nav_bar: any
+  font_awesome_flutter: any
   flutter_svg: any
   introduction_screen: any
   animated_splash_screen: any
@@ -79,7 +78,7 @@ dependencies:
   uuid: 
   http:
   path_provider:
-  baseflow_plugin_template: ^2.1.1
+  baseflow_plugin_template: any
   dropdown_button2: 
 
 dev_dependencies:

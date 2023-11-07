@@ -86,7 +86,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15),

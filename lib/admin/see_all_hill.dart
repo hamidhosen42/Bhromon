@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, must_be_immutable, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: unused_field, must_be_immutable, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables, non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
